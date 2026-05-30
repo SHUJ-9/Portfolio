@@ -1,140 +1,695 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jush A. Muit | Web Developer</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Jush Agbalog Muit | Video Editor Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #fff8f6;
+      --surface: rgba(255, 255, 255, 0.88);
+      --text: #2d3436;
+      --muted: #5f6a7a;
+      --border: rgba(45, 52, 54, 0.12);
+      --accent: #d4af37;
+      --shadow: 0 28px 80px rgba(45, 52, 54, 0.08);
+      font-family: 'Montserrat', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    header, footer {
-      background: #1a1a1a;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-
-    h1, h2, h3 {
-      margin-bottom: 1rem;
-    }
-
-    section {
-      padding: 2rem 1rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: #4CAF50;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-
-    .project {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      background: #fff;
-    }
-
-    .project img {
-      max-width: 100%;
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding-left: 1.5rem;
+      min-height: 100vh;
+      color: var(--text);
+      background: linear-gradient(180deg, #fff7f3 0%, #f9efea 52%, #fffaf7 100%);
+      overflow-x: hidden;
       position: relative;
-      margin-bottom: 0.75rem;
     }
 
-    ul li::before {
-      content: "✔️";
+    body::before,
+    body::after {
+      content: '';
       position: absolute;
-      left: 0;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(90px);
+    }
+
+    body::before {
+      top: -120px;
+      left: -90px;
+      width: 380px;
+      height: 380px;
+      background: rgba(212, 175, 55, 0.14);
+    }
+
+    body::after {
+      bottom: -100px;
+      right: -90px;
+      width: 320px;
+      height: 320px;
+      background: rgba(168, 213, 186, 0.16);
     }
 
     a {
-      color: #4CAF50;
+      color: inherit;
+      text-decoration: none;
     }
 
-    @media (max-width: 600px) {
-      header, section, footer {
-        padding: 1rem;
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 48px 28px 88px;
+    }
+
+    header {
+      display: grid;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+    }
+
+    .brand strong {
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
+      align-items: flex-start;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.26em;
+      color: var(--muted);
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy p {
+      font-size: 1.05rem;
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+    }
+
+    .button-primary {
+      background: var(--text);
+      color: #fff;
+      box-shadow: 0 18px 50px rgba(45, 52, 54, 0.16);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-panel {
+      padding: 32px;
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 24px;
+    }
+
+    .panel-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .panel-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text);
+      font-size: 0.88rem;
+      border: 1px solid rgba(45, 52, 54, 0.08);
+    }
+
+    .stats {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stat {
+      display: grid;
+      gap: 6px;
+      padding: 20px 22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #fffdf7 0%, #f7eed0 100%);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+    }
+
+    .stat strong {
+      font-size: 1.9rem;
+      display: block;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat span {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title-row {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .section-split {
+      display: grid;
+      gap: 26px;
+      grid-template-columns: minmax(0, 1.34fr) minmax(280px, 0.86fr);
+    }
+
+    .panel-card,
+    .feature-card,
+    .project-card,
+    .contact-card {
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 28px 70px rgba(45, 52, 54, 0.07);
+      padding: 30px;
+    }
+
+    .feature-card {
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 90px rgba(45, 52, 54, 0.1);
+    }
+
+    .feature-card h3,
+    .project-card h3,
+    .panel-card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .feature-card p,
+    .panel-card p,
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .badge-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .badgeline {
+      background: #fff;
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(45, 52, 54, 0.08);
+      font-size: 0.88rem;
+      display: inline-flex;
+    }
+
+    .skills-list,
+    .contact-list,
+    .timeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-item,
+    .timeline-item,
+    .contact-item {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 22px;
+      border: 1px solid rgba(45, 52, 54, 0.08);
+    }
+
+    .skill-label,
+    .contact-item strong {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .skill-label span:last-child {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .progress {
+      width: 100%;
+      height: 12px;
+      background: #ece7dd;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      height: 100%;
+      border-radius: inherit;
+      display: block;
+      background: linear-gradient(90deg, rgba(212,175,55,1) 0%, rgba(140,107,46,1) 100%);
+    }
+
+    .project-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .project-card small {
+      display: block;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      font-size: 0.82rem;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-card .contact-item {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .contact-card a {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact-card .button-secondary {
+      width: fit-content;
+      padding: 14px 22px;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .section-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 32px 20px 64px;
+      }
+
+      .topbar {
+        justify-content: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 6vw, 3.6rem);
+      }
+
+      .button {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="topbar">
+        <div class="brand">
+          <strong>Jush Agbalog Muit</strong>
+          <span>Video Editor • FBA Automation Specialist</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>Jush A. Muit</h1>
-    <p>Web Developer | Student | Freelancer</p>
-    <a href="#contact" class="cta-btn">📬 Hire Me</a>
-  </header>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Professionally packaged video funnels</span>
+          <h1>Clean CapCut edits, monetized YouTube channels, and high-converting FBA pages for fast launches.</h1>
+          <p>I build polished video stories, monetized YouTube content, and one-page funnel assets that make your offers look premium, sell better, and launch faster.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Video%20Editor%20Opportunity">Let's collaborate</a>
+            <a class="button button-secondary" href="#contact">Book a call</a>
+          </div>
+        </div>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a college student passionate about building clean, responsive websites. I create simple business websites, landing pages, and personal projects using HTML, CSS, JavaScript, and WordPress.</p>
-  </section>
+        <aside class="hero-panel panel-card">
+          <div class="panel-title">Capability snapshot</div>
+          <div class="panel-chips">
+            <span class="chip">CapCut editing</span>
+            <span class="chip">Story-driven pacing</span>
+            <span class="chip">FBA funnel design</span>
+            <span class="chip">High-converting copy</span>
+            <span class="chip">Monetized YouTube</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>1 year</strong><span>Editing experience</span></div>
+            <div class="stat"><strong>6+</strong><span>Delivered projects</span></div>
+            <div class="stat"><strong>1</strong><span>Monetized YouTube channel</span></div>
+          </div>
+        </aside>
+      </section>
+    </header>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>My Work</h2>
+    <section class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">What I deliver</h2>
+      </div>
+      <div class="section-grid service-grid">
+        <article class="feature-card">
+          <h3>Conversion-focused video edits</h3>
+          <p>Fast CapCut workflows with polished storytelling, clean transitions, and content that keeps viewers engaged.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Monetized content + funnels</h3>
+          <p>Integrated video and funnel systems built for YouTube monetization, product launches, and buyer conversion.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Launch-ready creative systems</h3>
+          <p>Fast, polished assets and page flows designed to move from concept to campaign launch quickly.</p>
+        </article>
+      </div>
+    </section>
 
-    <div class="project">
-      <img src="https://shuj-9.github.io/tulip-love-letter/assets/preview.png" alt="Tulip Love Website Preview">
-      <h3>Tulip Love Website 🌷</h3>
-      <p>Fun and animated interactive website made with HTML/CSS/JS.</p>
-      <a href="https://shuj-9.github.io/tulip-love-letter/" target="_blank">View Project</a>
-    </div>
+    <section id="about" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="section-split">
+        <div>
+          <div class="panel-card">
+            <h2>Who I am</h2>
+            <p>I’m a video editor, monetized YouTube creator, and FBA automation specialist based in Subic. I create clean CapCut edits, one-page funnel assets, and video channels that support launch and sales growth.</p>
+            <div class="badge-stack">
+              <span class="badgeline">CapCut</span>
+              <span class="badgeline">FBA funnel</span>
+              <span class="badgeline">Social ads</span>
+              <span class="badgeline">Landing pages</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-card">
+          <h2>Quick info</h2>
+          <ul class="contact-list">
+            <li><strong>Name:</strong> Jush Agbalog Muit</li>
+            <li><strong>Location:</strong> Sitio Bukid, Calapacuan, Subic, Zambales</li>
+            <li><strong>Email:</strong> <a href="mailto:joshmuit81@gmail.com">joshmuit81@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+639163944227">0916 394 4227</a></li>
+            <li><strong>Study:</strong> BS Computer Science, Kolehiyo ng Subic</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  </section>
+    <section id="skills" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="section-grid">
+        <div class="panel-card">
+          <h2>Core strengths</h2>
+          <ul class="skills-list">
+            <li class="skill-item"><div class="skill-label"><span>CapCut editing</span><span>95%</span></div><div class="progress"><span style="width: 95%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Storytelling & pacing</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Visual concept</span><span>84%</span></div><div class="progress"><span style="width: 84%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Client communication</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>FBA automation pages</span><span>80%</span></div><div class="progress"><span style="width: 80%"></span></div></li>
+          </ul>
+        </div>
+        <div class="panel-card">
+          <h2>Workflow</h2>
+          <ul class="contact-list">
+            <li>Fast, polished CapCut video production</li>
+            <li>Conversion-first landing page strategy</li>
+            <li>Responsive revisions and clear milestones</li>
+            <li>Assets ready for ads, socials, and launch pages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <!-- Services -->
-  <section id="services">
-    <h2>Services</h2>
-    <ul>
-      <li>Simple business websites (1–5 pages)</li>
-      <li>Personal portfolios</li>
-      <li>Responsive landing pages</li>
-      <li>Website redesign</li>
-    </ul>
-  </section>
+    <section id="experience" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="section-split">
+        <div>
+          <div class="panel-card">
+            <h2>Highlights</h2>
+            <ul class="timeline">
+              <li class="timeline-item">
+                <h3>Professional Video Editing</h3>
+                <small>CapCut · Promo · Social media</small>
+                <p>Delivered polished edits with clean cuts, tight pacing, and strong visual storytelling for content that performs.</p>
+              </li>
+              <li class="timeline-item">
+                <h3>Monetized One-Page FBA</h3>
+                <small>Landing page · Funnel conversion</small>
+                <p>Built a one-page funnel structure for an FBA launch that emphasizes product clarity, buying intent, and checkout readiness.</p>
+              </li>
+              <li class="timeline-item">
+                <h3>Customer service foundation</h3>
+                <small>Royal Duty Free Shop · Seasonal role</small>
+                <p>Showed reliability and professionalism in a fast-paced retail environment while supporting customer needs.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-card">
+          <h2>Education</h2>
+          <ul class="contact-list">
+            <li><strong>Kolehiyo ng Subic</strong> · BS Computer Science (2024–present)</li>
+            <li><strong>Senior High</strong> · ICT Strand Diploma (2022–2024)</li>
+            <li><strong>Mangan-Vaca Subic National High School</strong> · High School Certificate (2021)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>📧 Email: <strong>joshmuit81@gmail.com</strong></p>
-    <p>🌍 <a href="https://fiverr.com/yourprofile" target="_blank">Hire me on Fiverr</a></p>
-  </section>
+    <section class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Results</h2>
+      </div>
+      <div class="section-grid">
+        <div class="feature-card">
+          <h3>Monetized YouTube channel</h3>
+          <p>One channel approved for monetization, with project-ready content designed to grow views, subscribers, and revenue.</p>
+        </div>
+        <div class="feature-card">
+          <h3>FBA launch-ready page</h3>
+          <p>A conversion-first one-page funnel that supports product positioning, audience intent, and checkout readiness.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Fast, polished delivery</h3>
+          <p>Video and funnel assets created with launch speed and premium polish so campaigns move from idea to execution quickly.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Jush A. Muit. Built with 💻 by me.</p>
-  </footer>
+    <section id="work" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Selected projects</h2>
+      </div>
+      <p class="section-subtitle">Mga halimbawa ng portfolio pieces; palitan ng actual na link o video description para mas director-ready ang page.</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <small>Video edit sample</small>
+          <h3 class="project-title">Social Media Promo</h3>
+          <p class="project-description">A short-form edit with eye-catching motion, concise messaging, and ad-ready pacing.</p>
+        </article>
+        <article class="project-card">
+          <small>Video edit sample</small>
+          <h3 class="project-title">Event Recap</h3>
+          <p class="project-description">A polished recap that highlights energy, key moments, and strong emotional flow.</p>
+        </article>
+        <article class="project-card">
+          <small>Video edit sample</small>
+          <h3 class="project-title">Explainer Video</h3>
+          <p class="project-description">A clean explanatory edit that communicates a product message clearly and confidently.</p>
+        </article>
+        <article class="project-card">
+          <small>Monetized channel project</small>
+          <h3 class="project-title">YouTube monetization workflow</h3>
+          <p class="project-description">Content and channel strategy aligned to monetization requirements and audience growth on YouTube.</p>
+        </article>
+      </div>
+    </section>
 
+    <section id="contact" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="section-split">
+        <div>
+          <div class="panel-card">
+            <h2>Ready to work together</h2>
+            <p>If you need a fast-turnaround video editor and funnel designer who can turn concepts into polished launch assets, let's connect and make your next campaign look premium.</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-item"><strong>Email</strong><span><a href="mailto:joshmuit81@gmail.com">joshmuit81@gmail.com</a></span></div>
+          <div class="contact-item"><strong>Phone</strong><span><a href="tel:+639163944227">0916 394 4227</a></span></div>
+          <div class="contact-item"><strong>Location</strong><span>Subic, Zambales, Philippines</span></div>
+          <div class="contact-item"><strong>Request resume</strong><span><a class="button button-secondary" href="mailto:joshmuit81@gmail.com?subject=Resume%20Request">Request Resume</a></span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Designed with a premium soft UI style for video editing and FBA automation.
+    </footer>
+  </div>
 </body>
 </html>
