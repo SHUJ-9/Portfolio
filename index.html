@@ -421,9 +421,75 @@
       .button { width: 100%; }
       .cert-grid { grid-template-columns: 1fr; }
     }
+
+    /* Glow hover effect */
+    .glow-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glow-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(31, 77, 120, 0.13) 0%,
+        rgba(31, 77, 120, 0.05) 40%,
+        transparent 70%);
+      z-index: 0;
+    }
+
+    .glow-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(31, 77, 120, 0.18) 0%,
+        transparent 70%);
+      z-index: 0;
+    }
+
+    .glow-card:hover::before,
+    .glow-card:hover::after {
+      opacity: 1;
+    }
+
+    .glow-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 32px 80px rgba(31, 77, 120, 0.14), 0 0 0 1px rgba(31, 77, 120, 0.12);
+    }
+
+    .glow-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Custom cursor glow dot */
+    #cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,77,120,0.07) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: left 0.06s linear, top 0.06s linear;
+      z-index: 9999;
+      mix-blend-mode: normal;
+    }
   </style>
 </head>
 <body>
+  <div id="cursor-glow"></div>
   <div class="container">
     <header>
       <div class="topbar">
@@ -451,7 +517,7 @@
           </div>
         </div>
 
-        <aside class="hero-panel panel-card">
+        <aside class="hero-panel panel-card glow-card">
           <div class="panel-title">Capability snapshot</div>
           <div class="panel-chips">
             <span class="chip chip-accent">Content Moderation</span>
@@ -478,7 +544,7 @@
         <h2 class="section-title">About</h2>
       </div>
       <div class="section-split">
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Who I am</h2>
           <p>I am a BS Computer Science student and freelance content reviewer based in Subic, Zambales. I have hands-on experience applying YouTube, Meta/Facebook, and Amazon content policies — reviewing content for violations, flagging issues before they go live, and maintaining zero policy strikes across managed channels.</p>
           <p style="margin-top: 16px;">I have developed my own Trust & Safety Decision Framework covering violation classification (Tier 1–4), context evaluation, escalation protocols, and documentation standards. I am seeking a full-time Content Moderator or Trust & Safety role where I can protect users and uphold community standards at scale.</p>
@@ -490,7 +556,7 @@
             <span class="badgeline">FBA Automation</span>
           </div>
         </div>
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Quick info</h2>
           <ul class="contact-list">
             <li><strong>Name:</strong> Jush Agbalog Muit</li>
@@ -511,7 +577,7 @@
         <h2 class="section-title">Skills</h2>
       </div>
       <div class="section-grid">
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Trust & Safety — Core Skills</h2>
           <ul class="skills-list">
             <li class="skill-item"><div class="skill-label"><span>Content Moderation & Policy Review</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
@@ -521,7 +587,7 @@
             <li class="skill-item"><div class="skill-label"><span>Client Communication & De-escalation</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
           </ul>
         </div>
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Digital & Creative Skills</h2>
           <ul class="skills-list">
             <li class="skill-item"><div class="skill-label"><span>CapCut Video Editing</span><span>95%</span></div><div class="progress progress-gold"><span style="width: 95%"></span></div></li>
@@ -530,7 +596,7 @@
             <li class="skill-item"><div class="skill-label"><span>FBA Automation Pages</span><span>80%</span></div><div class="progress progress-gold"><span style="width: 80%"></span></div></li>
           </ul>
         </div>
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Platform Knowledge</h2>
           <div class="badge-stack" style="margin-top: 0;">
             <span class="badgeline badgeline-accent">YouTube Community Guidelines</span>
@@ -553,7 +619,7 @@
       </div>
       <p class="section-subtitle">Verified credentials demonstrating expertise in social media strategy, content policy, and digital marketing.</p>
       <div class="cert-grid">
-        <div class="cert-card">
+        <div class="cert-card glow-card">
           <div class="cert-badge">✓ Verified</div>
           <h3>Social Media Marketing Certification</h3>
           <p class="cert-issuer">HubSpot Academy</p>
@@ -564,14 +630,14 @@
             <img src="images/hubspot-certificate.png" alt="HubSpot Social Media Marketing Certificate — Jush A. Muit" />
           </div>
         </div>
-        <div class="cert-card">
+        <div class="cert-card glow-card">
           <div class="cert-badge">✓ Completed</div>
           <h3>Diploma in Social Media Marketing and Strategy</h3>
           <p class="cert-issuer">Alison — Advanced Level</p>
           <p class="cert-valid">Completed: Jun 2, 2026 · Score: 88%</p>
           <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Advanced diploma covering social media strategy, content planning, audience engagement, and platform policy management.</p>
         </div>
-        <div class="cert-card" style="border-left-color: var(--gold);">
+        <div class="cert-card glow-card" style="border-left-color: var(--gold);">
           <div class="cert-badge" style="background: rgba(212,175,55,0.1); color: #8c6b2e;">In Progress</div>
           <h3>Meta Blueprint — Community Standards</h3>
           <p class="cert-issuer">Meta for Developers</p>
@@ -598,7 +664,7 @@
             <div class="tier"><strong>Tier 4 — Monitor</strong><span>Borderline content, first-time minor breach → label + observe</span></div>
           </div>
         </article>
-        <article class="feature-card">
+        <article class="feature-card glow-card">
           <h3>Context Evaluation Matrix</h3>
           <p>Before finalizing any decision, content is evaluated across five dimensions: newsworthiness, educational value, satire, cultural context, and targeting of private individuals.</p>
           <div class="badge-stack">
@@ -609,7 +675,7 @@
             <span class="badgeline badgeline-accent">Targeted individual?</span>
           </div>
         </article>
-        <article class="feature-card">
+        <article class="feature-card glow-card">
           <h3>Escalation Protocol</h3>
           <p>Clear 3-level escalation path with defined triggers — from independent moderator decisions to senior team and legal review — ensuring no harmful content is ever approved unilaterally.</p>
           <div class="badge-stack">
@@ -618,7 +684,7 @@
             <span class="badgeline">Level 3: Legal/Policy</span>
           </div>
         </article>
-        <article class="feature-card">
+        <article class="feature-card glow-card">
           <h3>Documentation Standard</h3>
           <p>Every moderation action is logged with content ID, timestamp, violation tier, policy reference, action taken, and escalation status — building a defensible, auditable record.</p>
           <div class="badge-stack">
@@ -636,7 +702,7 @@
         <h2 class="section-title">Experience</h2>
       </div>
       <div class="section-split">
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Work History</h2>
           <ul class="timeline">
             <li class="timeline-item">
@@ -656,7 +722,7 @@
             </li>
           </ul>
         </div>
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Education</h2>
           <ul class="contact-list">
             <li><strong>Kolehiyo ng Subic</strong><br>BS Computer Science · 3rd Year (2024–Present)</li>
@@ -673,7 +739,7 @@
         <h2 class="section-title">Contact</h2>
       </div>
       <div class="section-split">
-        <div class="panel-card">
+        <div class="panel-card glow-card">
           <h2>Available for Content Moderator roles</h2>
           <p>I am actively seeking full-time remote Content Moderator and Trust & Safety positions. I am available immediately and equipped with certifications, a self-developed decision framework, and hands-on platform policy experience.</p>
           <div class="badge-stack">
@@ -696,5 +762,25 @@
       Jush Agbalog Muit · Content Moderator · Trust & Safety · Subic, Zambales · 2026
     </footer>
   </div>
+
+  <script>
+    // Cursor glow follower
+    const cursorGlow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', e => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // Card spotlight effect
+    document.querySelectorAll('.glow-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
+      });
+    });
+  </script>
 </body>
 </html>
