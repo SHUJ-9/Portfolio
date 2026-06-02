@@ -342,28 +342,38 @@
 
     /* Profile photo */
     .profile-photo-wrap {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 100%;
+      height: 280px;
+      border-radius: 20px;
       overflow: hidden;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 0 6px rgba(31,77,120,0.10), 0 8px 32px rgba(31,77,120,0.18);
-      margin-bottom: 20px;
-      flex-shrink: 0;
+      border: 2px solid rgba(31,77,120,0.18);
+      box-shadow: 0 12px 48px rgba(31,77,120,0.16);
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .profile-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(31,77,120,0.28) 0%, transparent 55%);
+      border-radius: inherit;
+      pointer-events: none;
     }
 
     .profile-photo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      filter: grayscale(20%);
-      transition: filter 0.3s ease, transform 0.3s ease;
+      object-position: center 15%;
+      filter: grayscale(15%) contrast(1.05);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      display: block;
     }
 
     .profile-photo-wrap:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.05);
+      filter: grayscale(0%) contrast(1.05);
+      transform: scale(1.04);
     }
 
     .cert-image-wrap {
@@ -569,11 +579,17 @@
       <div class="section-title-row">
         <h2 class="section-title">About</h2>
       </div>
-      <div class="section-split">
-        <div class="panel-card glow-card">
+      <div style="display: grid; grid-template-columns: 240px 1fr 1fr; gap: 26px; align-items: start;">
+        <div>
           <div class="profile-photo-wrap">
             <img src="images/jush-photo.jpg" alt="Jush Agbalog Muit" />
           </div>
+          <div style="text-align:center; margin-top: -8px;">
+            <strong style="display:block; font-size:1rem; color:var(--text);">Jush A. Muit</strong>
+            <span style="font-size:0.82rem; color:var(--accent); font-weight:600; letter-spacing:0.08em;">Content Moderator</span>
+          </div>
+        </div>
+        <div class="panel-card glow-card">
           <h2>Who I am</h2>
           <p>I am a BS Computer Science student and freelance content reviewer based in Subic, Zambales. I have hands-on experience applying YouTube, Meta/Facebook, and Amazon content policies — reviewing content for violations, flagging issues before they go live, and maintaining zero policy strikes across managed channels.</p>
           <p style="margin-top: 16px;">I have developed my own Trust & Safety Decision Framework covering violation classification (Tier 1–4), context evaluation, escalation protocols, and documentation standards. I am seeking a full-time Content Moderator or Trust & Safety role where I can protect users and uphold community standards at scale.</p>
@@ -598,6 +614,15 @@
           </ul>
         </div>
       </div>
+      <style>
+        @media (max-width: 1024px) {
+          #about .section > div[style] { grid-template-columns: 1fr 1fr !important; }
+          #about .section > div[style] > div:first-child { grid-column: 1 / -1; max-width: 240px; margin: 0 auto; }
+        }
+        @media (max-width: 720px) {
+          #about .section > div[style] { grid-template-columns: 1fr !important; }
+        }
+      </style>
     </section>
 
     <!-- SKILLS -->
