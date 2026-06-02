@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T&S Decision Framework — Jush A. Muit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f7fb;
+      color: #1a2332;
+      padding: 40px 20px 80px;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 80px rgba(31,77,120,0.10);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .doc-header {
+      background: linear-gradient(135deg, #1F4D78 0%, #2d6da8 100%);
+      color: #fff;
+      padding: 40px 48px;
+    }
+
+    .doc-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .doc-header .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.82;
+      margin-bottom: 20px;
+    }
+
+    .doc-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .doc-meta span {
+      font-size: 0.82rem;
+      opacity: 0.75;
+    }
+
+    .doc-meta strong {
+      opacity: 1;
+      font-weight: 600;
+    }
+
+    /* Body */
+    .doc-body { padding: 40px 48px; }
+
+    .section { margin-bottom: 36px; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #1F4D78;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e8f0f8;
+      width: 100%;
+    }
+
+    .intro-text {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #3d4f63;
+      margin-bottom: 20px;
+    }
+
+    /* Principles */
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .principle {
+      background: #f0f6ff;
+      border: 1px solid rgba(31,77,120,0.12);
+      border-radius: 14px;
+      padding: 16px 18px;
+      text-align: center;
+    }
+
+    .principle strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #1F4D78;
+      margin-bottom: 4px;
+    }
+
+    .principle span {
+      font-size: 0.78rem;
+      color: #5f7a96;
+      line-height: 1.5;
+    }
+
+    /* Tiers */
+    .tiers { display: grid; gap: 14px; }
+
+    .tier-card {
+      border-radius: 16px;
+      padding: 20px 22px;
+      border-left: 4px solid;
+    }
+
+    .tier-card.tier1 { background: #fff5f5; border-color: #e53e3e; }
+    .tier-card.tier2 { background: #fffaf0; border-color: #dd6b20; }
+    .tier-card.tier3 { background: #fffff0; border-color: #d69e2e; }
+    .tier-card.tier4 { background: #f0fff4; border-color: #38a169; }
+
+    .tier-card .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .tier-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .tier-card.tier1 h3 { color: #c53030; }
+    .tier-card.tier2 h3 { color: #c05621; }
+    .tier-card.tier3 h3 { color: #b7791f; }
+    .tier-card.tier4 h3 { color: #276749; }
+
+    .tier-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .tier1 .tier-badge { background: #fed7d7; color: #c53030; }
+    .tier2 .tier-badge { background: #feebc8; color: #c05621; }
+    .tier3 .tier-badge { background: #fefcbf; color: #b7791f; }
+    .tier4 .tier-badge { background: #c6f6d5; color: #276749; }
+
+    .tier-card p {
+      font-size: 0.85rem;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .tier-action {
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tier1 .tier-action { color: #c53030; }
+    .tier2 .tier-action { color: #c05621; }
+    .tier3 .tier-action { color: #b7791f; }
+    .tier4 .tier-action { color: #276749; }
+
+    /* Context matrix */
+    .context-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .context-table th {
+      background: #1F4D78;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    .context-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8f0f8;
+      color: #3d4f63;
+      line-height: 1.5;
+    }
+
+    .context-table tr:nth-child(even) td { background: #f8fbff; }
+
+    /* Escalation */
+    .escalation-levels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .esc-level {
+      background: #f8fbff;
+      border: 1px solid rgba(31,77,120,0.10);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .esc-level .level-num {
+      width: 36px;
+      height: 36px;
+      background: #1F4D78;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin: 0 auto 10px;
+    }
+
+    .esc-level strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #1F4D78;
+      margin-bottom: 6px;
+    }
+
+    .esc-level span {
+      font-size: 0.78rem;
+      color: #5f7a96;
+      line-height: 1.5;
+    }
+
+    /* Scenarios */
+    .scenarios { display: grid; gap: 14px; }
+
+    .scenario {
+      border: 1px solid #e8f0f8;
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .scenario-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .scenario h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1a2332;
+    }
+
+    .scenario .s-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #e8f0f8;
+      color: #1F4D78;
+    }
+
+    .scenario p {
+      font-size: 0.83rem;
+      color: #4a5568;
+      line-height: 1.65;
+    }
+
+    .scenario .s-action {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1F4D78;
+    }
+
+    /* Footer */
+    .doc-footer {
+      background: #f8fbff;
+      border-top: 1px solid #e8f0f8;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .doc-footer .author { font-size: 0.85rem; color: #3d4f63; }
+    .doc-footer .author strong { color: #1F4D78; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #1F4D78;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .back-btn:hover { opacity: 0.88; }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: transparent;
+      color: #1F4D78;
+      border: 1px solid #1F4D78;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .print-btn:hover { background: #1F4D78; color: #fff; }
+
+    @media (max-width: 640px) {
+      .doc-header, .doc-body, .doc-footer { padding: 28px 24px; }
+      .principles, .escalation-levels { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+      .back-btn, .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="doc-header">
+      <h1>Trust & Safety Content Moderation Decision Framework</h1>
+      <p class="subtitle">A structured, policy-first approach to content review, violation classification, and escalation management</p>
+      <div class="doc-meta">
+        <span><strong>Author:</strong> Jush A. Muit</span>
+        <span><strong>Version:</strong> 2026</span>
+        <span><strong>Certification:</strong> HubSpot Social Media Marketing Certified</span>
+        <span><strong>Contact:</strong> joshmuit81@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="doc-body">
+
+      <!-- Introduction -->
+      <div class="section">
+        <div class="section-label">Overview</div>
+        <p class="intro-text">This framework outlines how I approach every content moderation decision — from initial assessment through escalation and documentation. It is designed for high-volume review environments where speed and accuracy must coexist. Every decision I make affects a real person, and this framework ensures those decisions are consistent, defensible, and proportional.</p>
+        <div class="principles">
+          <div class="principle"><strong>Consistency</strong><span>Same rules for every user, no exceptions</span></div>
+          <div class="principle"><strong>Context</strong><span>Meaning depends on platform, audience & intent</span></div>
+          <div class="principle"><strong>Proportionality</strong><span>Action severity must match actual harm</span></div>
+          <div class="principle"><strong>Speed</strong><span>Accurate decisions under volume pressure</span></div>
+          <div class="principle"><strong>Documentation</strong><span>Every action logged and reviewable</span></div>
+          <div class="principle"><strong>Escalation</strong><span>When in doubt, escalate — not approve</span></div>
+        </div>
+      </div>
+
+      <!-- Violation Classification -->
+      <div class="section">
+        <div class="section-label">Step 2 — Violation Classification System</div>
+        <div class="tiers">
+          <div class="tier-card tier1">
+            <div class="tier-header">
+              <h3>Tier 1 — Critical</h3>
+              <span class="tier-badge">Immediate Action</span>
+            </div>
+            <p>CSAM, terrorism/violent extremism, doxxing, credible direct threats, human trafficking facilitation.</p>
+            <div class="tier-action">→ Remove immediately + preserve evidence + escalate to legal team within 5 minutes</div>
+          </div>
+          <div class="tier-card tier2">
+            <div class="tier-header">
+              <h3>Tier 2 — High Severity</h3>
+              <span class="tier-badge">Remove + Account Action</span>
+            </div>
+            <p>Hate speech, graphic violence, coordinated harassment, suicide/self-harm promotion, NCII, dangerous misinformation.</p>
+            <div class="tier-action">→ Remove content + issue warning or suspension + escalate to senior moderator</div>
+          </div>
+          <div class="tier-card tier3">
+            <div class="tier-header">
+              <h3>Tier 3 — Moderate</h3>
+              <span class="tier-badge">Restrict + Notify</span>
+            </div>
+            <p>Unverified health claims, spam/phishing, context-dependent nudity, copyright infringement, manipulated media.</p>
+            <div class="tier-action">→ Add warning label OR restrict visibility + notify user with policy reference</div>
+          </div>
+          <div class="tier-card tier4">
+            <div class="tier-header">
+              <h3>Tier 4 — Low Severity</h3>
+              <span class="tier-badge">Monitor + Label</span>
+            </div>
+            <p>Borderline content, first-time minor breach, satire that could be misread, sensitive but newsworthy content.</p>
+            <div class="tier-action">→ Add informational label if applicable + document + monitor account</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Context Evaluation -->
+      <div class="section">
+        <div class="section-label">Step 3 — Context Evaluation Matrix</div>
+        <table class="context-table">
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Question to Ask</th>
+              <th>Possible Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Newsworthiness</strong></td><td>Is this documenting a real event?</td><td>May exempt from removal</td></tr>
+            <tr><td><strong>Educational</strong></td><td>Is this informational or medical content?</td><td>May allow with label</td></tr>
+            <tr><td><strong>Satire</strong></td><td>Is this clearly marked as parody?</td><td>May allow if obvious</td></tr>
+            <tr><td><strong>Cultural Context</strong></td><td>Does regional context affect meaning?</td><td>Adjust classification</td></tr>
+            <tr><td><strong>Targeting</strong></td><td>Is a specific private individual being harassed?</td><td>Escalate immediately</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.82rem; color:#e53e3e; font-weight:600; margin-top:12px;">Golden Rule: When context is unclear and harm is possible — ESCALATE rather than approve. An over-removal is reversible. Approving genuinely harmful content is not.</p>
+      </div>
+
+      <!-- Escalation Protocol -->
+      <div class="section">
+        <div class="section-label">Step 4 — Escalation Protocol</div>
+        <div class="escalation-levels">
+          <div class="esc-level">
+            <div class="level-num">1</div>
+            <strong>Content Moderator</strong>
+            <span>Handles Tier 3 & 4 independently. Always escalates Tier 1 and cases involving minors.</span>
+          </div>
+          <div class="esc-level">
+            <div class="level-num">2</div>
+            <strong>Senior Moderator</strong>
+            <span>Handles Tier 2 violations, user appeals, edge cases, and context-heavy decisions.</span>
+          </div>
+          <div class="esc-level">
+            <div class="level-num">3</div>
+            <strong>Policy / Legal Team</strong>
+            <span>Handles Tier 1, government requests, law enforcement coordination, high-profile incidents.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scenario Walkthroughs -->
+      <div class="section">
+        <div class="section-label">Scenario Walkthroughs</div>
+        <div class="scenarios">
+          <div class="scenario">
+            <div class="scenario-head">
+              <h4>Scenario A — Direct threat against a named private individual</h4>
+              <span class="s-badge">Tier 2</span>
+            </div>
+            <p>A post names a specific person with their address and says "someone should deal with this person." No journalistic or satirical context present.</p>
+            <div class="s-action">→ Remove + suspend account + escalate to senior moderator</div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">
+              <h4>Scenario B — News account posts graphic war injury photo</h4>
+              <span class="s-badge">Tier 3</span>
+            </div>
+            <p>Verified news source shares a graphic injury photo with journalistic caption documenting a conflict. No glorification present.</p>
+            <div class="s-action">→ Apply sensitive content warning + allow with restricted reach</div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">
+              <h4>Scenario C — Mental health distress post</h4>
+              <span class="s-badge">Tier 2 Welfare</span>
+            </div>
+            <p>User posts about severe depression saying "I don't know how much longer I can do this." No policy violation but a welfare concern.</p>
+            <div class="s-action">→ Do NOT remove. Apply safe messaging label + escalate to wellness support team</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="doc-footer">
+      <div class="author">
+        <strong>Jush A. Muit</strong> · Content Moderator Applicant · Subic, Zambales<br>
+        <span style="font-size:0.78rem;">joshmuit81@gmail.com · HubSpot Social Media Certified · 2026</span>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+        <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
