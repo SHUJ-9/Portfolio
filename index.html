@@ -340,6 +340,32 @@
       padding: 24px 28px;
     }
 
+    /* Profile photo */
+    .profile-photo-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 0 6px rgba(31,77,120,0.10), 0 8px 32px rgba(31,77,120,0.18);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .profile-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .profile-photo-wrap:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
     .cert-image-wrap {
       margin-top: 18px;
       border-radius: 16px;
@@ -545,6 +571,9 @@
       </div>
       <div class="section-split">
         <div class="panel-card glow-card">
+          <div class="profile-photo-wrap">
+            <img src="images/jush-photo.jpg" alt="Jush Agbalog Muit" />
+          </div>
           <h2>Who I am</h2>
           <p>I am a BS Computer Science student and freelance content reviewer based in Subic, Zambales. I have hands-on experience applying YouTube, Meta/Facebook, and Amazon content policies — reviewing content for violations, flagging issues before they go live, and maintaining zero policy strikes across managed channels.</p>
           <p style="margin-top: 16px;">I have developed my own Trust & Safety Decision Framework covering violation classification (Tier 1–4), context evaluation, escalation protocols, and documentation standards. I am seeking a full-time Content Moderator or Trust & Safety role where I can protect users and uphold community standards at scale.</p>
