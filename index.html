@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jush Agbalog Muit | Video Editor Portfolio</title>
+  <title>Jush Agbalog Muit | Content Moderator & Digital Creator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,18 +15,15 @@
       --text: #2d3436;
       --muted: #5f6a7a;
       --border: rgba(45, 52, 54, 0.12);
-      --accent: #d4af37;
+      --accent: #1F4D78;
+      --accent-light: rgba(31, 77, 120, 0.08);
+      --gold: #d4af37;
       --shadow: 0 28px 80px rgba(45, 52, 54, 0.08);
       font-family: 'Montserrat', system-ui, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -37,8 +34,7 @@
       position: relative;
     }
 
-    body::before,
-    body::after {
+    body::before, body::after {
       content: '';
       position: absolute;
       z-index: 0;
@@ -48,25 +44,18 @@
     }
 
     body::before {
-      top: -120px;
-      left: -90px;
-      width: 380px;
-      height: 380px;
-      background: rgba(212, 175, 55, 0.14);
+      top: -120px; left: -90px;
+      width: 380px; height: 380px;
+      background: rgba(31, 77, 120, 0.10);
     }
 
     body::after {
-      bottom: -100px;
-      right: -90px;
-      width: 320px;
-      height: 320px;
-      background: rgba(168, 213, 186, 0.16);
+      bottom: -100px; right: -90px;
+      width: 320px; height: 320px;
+      background: rgba(212, 175, 55, 0.14);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       position: relative;
@@ -91,36 +80,13 @@
       gap: 18px;
     }
 
-    .brand {
-      display: grid;
-      gap: 4px;
-    }
+    .brand { display: grid; gap: 4px; }
+    .brand strong { font-size: 1.1rem; letter-spacing: -0.02em; }
+    .brand span { font-size: 0.92rem; color: var(--muted); }
 
-    .brand strong {
-      font-size: 1.1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand span {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      font-size: 0.95rem;
-      color: var(--muted);
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
+    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .nav-links a { font-size: 0.95rem; color: var(--muted); transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--text); }
 
     .hero {
       display: grid;
@@ -129,23 +95,21 @@
       align-items: flex-start;
     }
 
-    .hero-copy {
-      display: grid;
-      gap: 28px;
-    }
+    .hero-copy { display: grid; gap: 28px; }
 
     .eyebrow {
       text-transform: uppercase;
       font-size: 0.78rem;
       letter-spacing: 0.26em;
-      color: var(--muted);
+      color: var(--accent);
+      font-weight: 600;
     }
 
     .hero-copy h1 {
       margin: 0;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 5vw, 4.6rem);
-      line-height: 0.98;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
@@ -156,11 +120,7 @@
       line-height: 1.85;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
     .button {
       display: inline-flex;
@@ -170,13 +130,13 @@
       border-radius: 999px;
       border: 1px solid transparent;
       font-weight: 700;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
 
     .button-primary {
-      background: var(--text);
+      background: var(--accent);
       color: #fff;
-      box-shadow: 0 18px 50px rgba(45, 52, 54, 0.16);
+      box-shadow: 0 18px 50px rgba(31, 77, 120, 0.22);
     }
 
     .button-secondary {
@@ -185,9 +145,7 @@
       border-color: var(--border);
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-    }
+    .button:hover { transform: translateY(-2px); }
 
     .hero-panel {
       padding: 32px;
@@ -206,11 +164,7 @@
       color: var(--muted);
     }
 
-    .panel-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+    .panel-chips { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .chip {
       padding: 10px 16px;
@@ -221,37 +175,28 @@
       border: 1px solid rgba(45, 52, 54, 0.08);
     }
 
-    .stats {
-      display: grid;
-      gap: 16px;
+    .chip-accent {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: rgba(31, 77, 120, 0.18);
+      font-weight: 600;
     }
+
+    .stats { display: grid; gap: 16px; }
 
     .stat {
       display: grid;
       gap: 6px;
       padding: 20px 22px;
       border-radius: 24px;
-      background: linear-gradient(180deg, #fffdf7 0%, #f7eed0 100%);
-      border: 1px solid rgba(212, 175, 55, 0.18);
+      background: linear-gradient(180deg, #f0f6ff 0%, #dceaf7 100%);
+      border: 1px solid rgba(31, 77, 120, 0.12);
     }
 
-    .stat strong {
-      font-size: 1.9rem;
-      display: block;
-      color: var(--text);
-      line-height: 1;
-    }
+    .stat strong { font-size: 1.9rem; display: block; color: var(--accent); line-height: 1; }
+    .stat span { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
 
-    .stat span {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted);
-    }
-
-    .section {
-      padding: 72px 0;
-    }
+    .section { padding: 72px 0; }
 
     .section-title-row {
       display: flex;
@@ -260,23 +205,17 @@
       margin-bottom: 28px;
     }
 
-    .section-title {
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin: 0;
-    }
+    .section-title { font-size: 1.7rem; font-weight: 700; margin: 0; }
 
     .section-subtitle {
       color: var(--muted);
       font-size: 0.98rem;
       max-width: 680px;
       line-height: 1.75;
+      margin-bottom: 28px;
     }
 
-    .section-grid {
-      display: grid;
-      gap: 24px;
-    }
+    .section-grid { display: grid; gap: 24px; }
 
     .section-split {
       display: grid;
@@ -284,10 +223,7 @@
       grid-template-columns: minmax(0, 1.34fr) minmax(280px, 0.86fr);
     }
 
-    .panel-card,
-    .feature-card,
-    .project-card,
-    .contact-card {
+    .panel-card, .feature-card, .project-card, .contact-card, .cert-card {
       border-radius: 26px;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -304,28 +240,19 @@
       box-shadow: 0 32px 90px rgba(45, 52, 54, 0.1);
     }
 
-    .feature-card h3,
-    .project-card h3,
-    .panel-card h2 {
+    .feature-card h3, .project-card h3, .panel-card h2, .cert-card h3 {
       margin: 0 0 14px;
       font-size: 1.15rem;
       line-height: 1.3;
     }
 
-    .feature-card p,
-    .panel-card p,
-    .project-card p {
+    .feature-card p, .panel-card p, .project-card p, .cert-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .badge-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
+    .badge-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 
     .badgeline {
       background: #fff;
@@ -337,9 +264,14 @@
       display: inline-flex;
     }
 
-    .skills-list,
-    .contact-list,
-    .timeline {
+    .badgeline-accent {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: rgba(31, 77, 120, 0.18);
+      font-weight: 600;
+    }
+
+    .skills-list, .contact-list, .timeline {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -347,9 +279,7 @@
       gap: 14px;
     }
 
-    .skill-item,
-    .timeline-item,
-    .contact-item {
+    .skill-item, .timeline-item, .contact-item {
       display: grid;
       gap: 10px;
       padding: 18px;
@@ -358,22 +288,17 @@
       border: 1px solid rgba(45, 52, 54, 0.08);
     }
 
-    .skill-label,
-    .contact-item strong {
+    .skill-label, .contact-item strong {
       display: flex;
       justify-content: space-between;
       color: var(--text);
       font-weight: 600;
     }
 
-    .skill-label span:last-child {
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .skill-label span:last-child { color: var(--muted); font-weight: 500; }
 
     .progress {
-      width: 100%;
-      height: 12px;
+      width: 100%; height: 12px;
       background: #ece7dd;
       border-radius: 999px;
       overflow: hidden;
@@ -383,13 +308,14 @@
       height: 100%;
       border-radius: inherit;
       display: block;
+      background: linear-gradient(90deg, #1F4D78 0%, #3a7abf 100%);
+    }
+
+    .progress-gold span {
       background: linear-gradient(90deg, rgba(212,175,55,1) 0%, rgba(140,107,46,1) 100%);
     }
 
-    .project-grid {
-      display: grid;
-      gap: 20px;
-    }
+    .project-grid { display: grid; gap: 20px; }
 
     .project-card small {
       display: block;
@@ -400,26 +326,66 @@
       font-size: 0.82rem;
     }
 
-    .contact-card {
-      display: grid;
-      gap: 18px;
+    .contact-card { display: grid; gap: 18px; }
+
+    .contact-card .contact-item { background: transparent; border: none; padding: 0; }
+    .contact-card a { color: var(--text); font-weight: 600; }
+    .contact-card .button-secondary { width: fit-content; padding: 14px 22px; }
+
+    /* Certification cards */
+    .cert-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .cert-card {
+      border-left: 4px solid var(--accent);
+      padding: 24px 28px;
     }
 
-    .contact-card .contact-item {
-      background: transparent;
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .cert-card h3 { color: var(--accent); font-size: 1.05rem; margin: 0 0 8px; }
+    .cert-card .cert-issuer { font-size: 0.88rem; color: var(--muted); margin: 0 0 6px; }
+    .cert-card .cert-valid { font-size: 0.82rem; color: var(--muted); }
+    .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 8px; }
+
+    /* T&S Framework highlight */
+    .framework-card {
+      background: linear-gradient(135deg, #1F4D78 0%, #2d6da8 100%);
+      color: #fff;
       border: none;
-      padding: 0;
     }
 
-    .contact-card a {
-      color: var(--text);
-      font-weight: 600;
+    .framework-card h3 { color: #fff; font-size: 1.2rem; }
+    .framework-card p { color: rgba(255,255,255,0.82); }
+
+    .framework-tiers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
     }
 
-    .contact-card .button-secondary {
-      width: fit-content;
-      padding: 14px 22px;
+    .tier {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
     }
+
+    .tier strong { display: block; font-size: 0.88rem; color: #fff; margin-bottom: 4px; }
+    .tier span { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
 
     footer {
       margin-top: 20px;
@@ -429,32 +395,17 @@
     }
 
     @media (max-width: 1024px) {
-      .hero,
-      .section-split {
-        grid-template-columns: 1fr;
-      }
+      .hero, .section-split { grid-template-columns: 1fr; }
+      .framework-tiers { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
-      .container {
-        padding: 32px 20px 64px;
-      }
-
-      .topbar {
-        justify-content: center;
-      }
-
-      .nav-links {
-        justify-content: center;
-      }
-
-      .hero-copy h1 {
-        font-size: clamp(2.8rem, 6vw, 3.6rem);
-      }
-
-      .button {
-        width: 100%;
-      }
+      .container { padding: 32px 20px 64px; }
+      .topbar { justify-content: center; }
+      .nav-links { justify-content: center; }
+      .hero-copy h1 { font-size: clamp(2.4rem, 6vw, 3.2rem); }
+      .button { width: 100%; }
+      .cert-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -464,234 +415,268 @@
       <div class="topbar">
         <div class="brand">
           <strong>Jush Agbalog Muit</strong>
-          <span>Video Editor • FBA Automation Specialist</span>
+          <span>Content Moderator · Trust & Safety · Digital Creator</span>
         </div>
         <nav class="nav-links">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
-          <a href="#work">Work</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#framework">T&S Framework</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
 
       <section class="hero">
         <div class="hero-copy">
-          <span class="eyebrow">Professionally packaged video funnels</span>
-          <h1>Clean CapCut edits, monetized YouTube channels, and high-converting FBA pages for full-time launch campaigns.</h1>
-          <p>I build polished video stories, YouTube monetization assets, and conversion-ready funnels. Available for full-time remote work at ₱300/hour to help your launch move from concept to sales.</p>
+          <span class="eyebrow">Content Moderation · Trust & Safety · Social Media</span>
+          <h1>Protecting online communities through structured, policy-first content moderation.</h1>
+          <p>BS Computer Science student with hands-on experience reviewing digital content for YouTube and Meta policy compliance, escalation handling, and community guidelines enforcement. HubSpot Social Media Certified. Available full-time for remote Content Moderator and Trust & Safety roles.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Video%20Editor%20Opportunity">Let's collaborate</a>
-            <a class="button button-secondary" href="#contact">Book a call</a>
+            <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Content%20Moderator%20Opportunity">Let's connect</a>
+            <a class="button button-secondary" href="#contact">View contact</a>
           </div>
         </div>
 
         <aside class="hero-panel panel-card">
           <div class="panel-title">Capability snapshot</div>
           <div class="panel-chips">
-            <span class="chip">CapCut editing</span>
-            <span class="chip">Story-driven pacing</span>
-            <span class="chip">FBA funnel design</span>
-            <span class="chip">High-converting copy</span>
-            <span class="chip">Monetized YouTube</span>
-            <span class="chip">Full-time ready</span>
+            <span class="chip chip-accent">Content Moderation</span>
+            <span class="chip chip-accent">Policy Enforcement</span>
+            <span class="chip chip-accent">Escalation Handling</span>
+            <span class="chip chip-accent">Community Guidelines</span>
+            <span class="chip">Social Media Monitoring</span>
+            <span class="chip">Customer De-escalation</span>
+            <span class="chip">CapCut Video Editing</span>
+            <span class="chip">Full-time Remote Ready</span>
           </div>
           <div class="stats">
-            <div class="stat"><strong>1 year</strong><span>Editing experience</span></div>
-            <div class="stat"><strong>6+</strong><span>Delivered projects</span></div>
-            <div class="stat"><strong>1</strong><span>Monetized YouTube channel</span></div>
+            <div class="stat"><strong>3+</strong><span>Years content review experience</span></div>
+            <div class="stat"><strong>6+</strong><span>Delivered client projects</span></div>
+            <div class="stat"><strong>0</strong><span>Policy strikes on managed channels</span></div>
           </div>
         </aside>
       </section>
     </header>
 
-    <section class="section">
-      <div class="section-title-row">
-        <h2 class="section-title">What I deliver</h2>
-      </div>
-      <div class="section-grid service-grid">
-        <article class="feature-card">
-          <h3>Conversion-focused video edits</h3>
-          <p>Fast CapCut workflows with polished storytelling, clean transitions, and content that keeps viewers engaged.</p>
-        </article>
-        <article class="feature-card">
-          <h3>Monetized content + funnels</h3>
-          <p>Integrated video and funnel systems built for YouTube monetization, product launches, and buyer conversion.</p>
-        </article>
-        <article class="feature-card">
-          <h3>Launch-ready creative systems</h3>
-          <p>Fast, polished assets and page flows designed to move from concept to campaign launch quickly.</p>
-        </article>
-      </div>
-    </section>
-
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="section-title-row">
         <h2 class="section-title">About</h2>
       </div>
       <div class="section-split">
-        <div>
-          <div class="panel-card">
-            <h2>Who I am</h2>
-            <p>I’m a video editor, monetized YouTube creator, and FBA automation specialist based in Subic. I create clean CapCut edits, one-page funnel assets, and video channels that support launch and sales growth.</p>
-            <div class="badge-stack">
-              <span class="badgeline">CapCut</span>
-              <span class="badgeline">FBA funnel</span>
-              <span class="badgeline">Social ads</span>
-              <span class="badgeline">Landing pages</span>
-            </div>
+        <div class="panel-card">
+          <h2>Who I am</h2>
+          <p>I am a BS Computer Science student and freelance content reviewer based in Subic, Zambales. I have hands-on experience applying YouTube, Meta/Facebook, and Amazon content policies — reviewing content for violations, flagging issues before they go live, and maintaining zero policy strikes across managed channels.</p>
+          <p style="margin-top: 16px;">I have developed my own Trust & Safety Decision Framework covering violation classification (Tier 1–4), context evaluation, escalation protocols, and documentation standards. I am seeking a full-time Content Moderator or Trust & Safety role where I can protect users and uphold community standards at scale.</p>
+          <div class="badge-stack">
+            <span class="badgeline badgeline-accent">Content Moderation</span>
+            <span class="badgeline badgeline-accent">Trust & Safety</span>
+            <span class="badgeline badgeline-accent">Policy Enforcement</span>
+            <span class="badgeline">CapCut Editing</span>
+            <span class="badgeline">FBA Automation</span>
           </div>
         </div>
         <div class="panel-card">
           <h2>Quick info</h2>
           <ul class="contact-list">
             <li><strong>Name:</strong> Jush Agbalog Muit</li>
-            <li><strong>Availability:</strong> Full-time remote work</li>
-            <li><strong>Rate:</strong> ₱300/hour</li>
-            <li><strong>Location:</strong> Sitio Bukid, Calapacuan, Subic, Zambales</li>
+            <li><strong>Availability:</strong> Full-time remote · Immediate start</li>
+            <li><strong>Location:</strong> Subic, Zambales, Philippines</li>
             <li><strong>Email:</strong> <a href="mailto:joshmuit81@gmail.com">joshmuit81@gmail.com</a></li>
             <li><strong>Phone:</strong> <a href="tel:+639275910424">0927 591 0424</a></li>
             <li><strong>Study:</strong> BS Computer Science, Kolehiyo ng Subic (3rd year)</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jush-agbalog-muit-3a6106377/" target="_blank">linkedin.com/in/jush-agbalog-muit</a></li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="section">
       <div class="section-title-row">
         <h2 class="section-title">Skills</h2>
       </div>
       <div class="section-grid">
         <div class="panel-card">
-          <h2>Core strengths</h2>
+          <h2>Trust & Safety — Core Skills</h2>
           <ul class="skills-list">
-            <li class="skill-item"><div class="skill-label"><span>CapCut editing</span><span>95%</span></div><div class="progress"><span style="width: 95%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Storytelling & pacing</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Visual concept</span><span>84%</span></div><div class="progress"><span style="width: 84%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Client communication</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>FBA automation pages</span><span>80%</span></div><div class="progress"><span style="width: 80%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Content Moderation & Policy Review</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Escalation Handling & Documentation</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Community Guidelines Enforcement</span><span>87%</span></div><div class="progress"><span style="width: 87%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Social Media Monitoring</span><span>85%</span></div><div class="progress"><span style="width: 85%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Client Communication & De-escalation</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
           </ul>
         </div>
         <div class="panel-card">
-          <h2>Workflow</h2>
-          <ul class="contact-list">
-            <li>Fast, polished CapCut video production</li>
-            <li>Conversion-first landing page strategy</li>
-            <li>Responsive revisions and clear milestones</li>
-            <li>Assets ready for ads, socials, and launch pages</li>
+          <h2>Digital & Creative Skills</h2>
+          <ul class="skills-list">
+            <li class="skill-item"><div class="skill-label"><span>CapCut Video Editing</span><span>95%</span></div><div class="progress progress-gold"><span style="width: 95%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Storytelling & Pacing</span><span>88%</span></div><div class="progress progress-gold"><span style="width: 88%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Visual Concept Development</span><span>84%</span></div><div class="progress progress-gold"><span style="width: 84%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>FBA Automation Pages</span><span>80%</span></div><div class="progress progress-gold"><span style="width: 80%"></span></div></li>
           </ul>
+        </div>
+        <div class="panel-card">
+          <h2>Platform Knowledge</h2>
+          <div class="badge-stack" style="margin-top: 0;">
+            <span class="badgeline badgeline-accent">YouTube Community Guidelines</span>
+            <span class="badgeline badgeline-accent">Meta/Facebook Standards</span>
+            <span class="badgeline badgeline-accent">Amazon Seller Policy</span>
+            <span class="badgeline">Instagram</span>
+            <span class="badgeline">TikTok</span>
+            <span class="badgeline">Google Workspace</span>
+            <span class="badgeline">Microsoft Office</span>
+            <span class="badgeline">GitHub Pages</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <p class="section-subtitle">Verified credentials demonstrating expertise in social media strategy, content policy, and digital marketing.</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-badge">✓ Verified</div>
+          <h3>Social Media Marketing Certification</h3>
+          <p class="cert-issuer">HubSpot Academy</p>
+          <p class="cert-valid">Valid: Jun 1, 2026 – Jun 30, 2028</p>
+          <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Covers: Social monitoring, content strategy, social engagement, community guidelines, social media policy creation, and social ROI.</p>
+          <div class="cert-code">Code: 82a6e23d378e4b1e9cdc300340de72e4</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">✓ Completed</div>
+          <h3>Diploma in Social Media Marketing and Strategy</h3>
+          <p class="cert-issuer">Alison — Advanced Level</p>
+          <p class="cert-valid">Completed: Jun 2, 2026 · Score: 88%</p>
+          <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Advanced diploma covering social media strategy, content planning, audience engagement, and platform policy management.</p>
+        </div>
+        <div class="cert-card" style="border-left-color: var(--gold);">
+          <div class="cert-badge" style="background: rgba(212,175,55,0.1); color: #8c6b2e;">In Progress</div>
+          <h3>Meta Blueprint — Community Standards</h3>
+          <p class="cert-issuer">Meta for Developers</p>
+          <p class="cert-valid">Facebook & Instagram platform policies</p>
+          <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Hands-on knowledge of Meta Community Standards, content moderation workflows, and policy enforcement for Facebook and Instagram.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- T&S DECISION FRAMEWORK -->
+    <section id="framework" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">T&S Decision Framework</h2>
+      </div>
+      <p class="section-subtitle">A self-developed, structured approach to content moderation — demonstrating real Trust & Safety methodology before being hired.</p>
+      <div class="section-grid">
+        <article class="feature-card framework-card">
+          <h3>5-Step Moderation Process</h3>
+          <p>A complete, repeatable framework for consistent content moderation decisions — from initial assessment through escalation and documentation.</p>
+          <div class="framework-tiers">
+            <div class="tier"><strong>Tier 1 — Critical</strong><span>CSAM, terrorism, doxxing, direct threats → immediate removal + escalation</span></div>
+            <div class="tier"><strong>Tier 2 — High Severity</strong><span>Hate speech, graphic violence, harassment → remove + account action</span></div>
+            <div class="tier"><strong>Tier 3 — Moderate</strong><span>Misinformation, spam, copyright → restrict + notify user</span></div>
+            <div class="tier"><strong>Tier 4 — Monitor</strong><span>Borderline content, first-time minor breach → label + observe</span></div>
+          </div>
+        </article>
+        <article class="feature-card">
+          <h3>Context Evaluation Matrix</h3>
+          <p>Before finalizing any decision, content is evaluated across five dimensions: newsworthiness, educational value, satire, cultural context, and targeting of private individuals.</p>
+          <div class="badge-stack">
+            <span class="badgeline badgeline-accent">Newsworthy?</span>
+            <span class="badgeline badgeline-accent">Educational?</span>
+            <span class="badgeline badgeline-accent">Satirical?</span>
+            <span class="badgeline badgeline-accent">Cultural context?</span>
+            <span class="badgeline badgeline-accent">Targeted individual?</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <h3>Escalation Protocol</h3>
+          <p>Clear 3-level escalation path with defined triggers — from independent moderator decisions to senior team and legal review — ensuring no harmful content is ever approved unilaterally.</p>
+          <div class="badge-stack">
+            <span class="badgeline">Level 1: Moderator</span>
+            <span class="badgeline">Level 2: Team Lead</span>
+            <span class="badgeline">Level 3: Legal/Policy</span>
+          </div>
+        </article>
+        <article class="feature-card">
+          <h3>Documentation Standard</h3>
+          <p>Every moderation action is logged with content ID, timestamp, violation tier, policy reference, action taken, and escalation status — building a defensible, auditable record.</p>
+          <div class="badge-stack">
+            <span class="badgeline badgeline-accent">Consistent</span>
+            <span class="badgeline badgeline-accent">Defensible</span>
+            <span class="badgeline badgeline-accent">Auditable</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="section-title-row">
         <h2 class="section-title">Experience</h2>
       </div>
       <div class="section-split">
-        <div>
-          <div class="panel-card">
-            <h2>Highlights</h2>
-            <ul class="timeline">
-              <li class="timeline-item">
-                <h3>Professional Video Editing</h3>
-                <small>CapCut · Promo · Social media</small>
-                <p>Delivered polished edits with clean cuts, tight pacing, and strong visual storytelling for content that performs.</p>
-              </li>
-              <li class="timeline-item">
-                <h3>Monetized One-Page FBA</h3>
-                <small>Landing page · Funnel conversion</small>
-                <p>Built a one-page funnel structure for an FBA launch that emphasizes product clarity, buying intent, and checkout readiness.</p>
-              </li>
-              <li class="timeline-item">
-                <h3>Customer service foundation</h3>
-                <small>Royal Duty Free Shop · Seasonal role</small>
-                <p>Showed reliability and professionalism in a fast-paced retail environment while supporting customer needs.</p>
-              </li>
-            </ul>
-          </div>
+        <div class="panel-card">
+          <h2>Work History</h2>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <h3>Content Reviewer & Video Editor</h3>
+              <small>Self-Employed (Freelance) · 2023–Present</small>
+              <p>Reviewed 100+ pieces of digital content monthly for YouTube and Meta policy compliance. Achieved zero policy strikes across all managed channels. Guided one YouTube channel to full monetization approval through strict content standards enforcement.</p>
+            </li>
+            <li class="timeline-item">
+              <h3>FBA Content & Compliance Reviewer</h3>
+              <small>Self-Employed (Freelance) · 2023–Present</small>
+              <p>Audited Amazon product listings for seller policy compliance before going live. Identified prohibited content and flagged items for correction. Communicated policy requirements to clients clearly and professionally.</p>
+            </li>
+            <li class="timeline-item">
+              <h3>Customer Service Representative</h3>
+              <small>Royal Duty Free Shop · Subic, Zambales · Seasonal</small>
+              <p>Handled customer escalations following store policies. De-escalated sensitive situations with empathy. Documented concerns and escalated complex cases to appropriate personnel.</p>
+            </li>
+          </ul>
         </div>
         <div class="panel-card">
           <h2>Education</h2>
           <ul class="contact-list">
-          <li><strong>Kolehiyo ng Subic</strong> · BS Computer Science (3rd year)</li>
-            <li><strong>Senior High</strong> · ICT Strand Diploma (2022–2024)</li>
-            <li><strong>Mangan-Vaca Subic National High School</strong> · High School Certificate (2021)</li>
+            <li><strong>Kolehiyo ng Subic</strong><br>BS Computer Science · 3rd Year (2024–Present)</li>
+            <li><strong>Mangan-Vaca Subic National High School</strong><br>ICT Strand Diploma · 2022–2024</li>
+            <li><strong>High School Certificate</strong><br>2021</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-title-row">
-        <h2 class="section-title">Results</h2>
-      </div>
-      <div class="section-grid">
-        <div class="feature-card">
-          <h3>Monetized YouTube channel</h3>
-          <p>One channel approved for monetization, with project-ready content designed to grow views, subscribers, and revenue.</p>
-        </div>
-        <div class="feature-card">
-          <h3>FBA launch-ready page</h3>
-          <p>A conversion-first one-page funnel that supports product positioning, audience intent, and checkout readiness.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Fast, polished delivery</h3>
-          <p>Video and funnel assets created with launch speed and premium polish so campaigns move from idea to execution quickly.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="section">
-      <div class="section-title-row">
-        <h2 class="section-title">Selected projects</h2>
-      </div>
-      <p class="section-subtitle">Mga halimbawa ng portfolio pieces; palitan ng actual na link o video description para mas director-ready ang page.</p>
-      <div class="project-grid">
-        <article class="project-card">
-          <small>Video edit sample</small>
-          <h3 class="project-title">Social Media Promo</h3>
-          <p class="project-description">A short-form edit with eye-catching motion, concise messaging, and ad-ready pacing.</p>
-        </article>
-        <article class="project-card">
-          <small>Video edit sample</small>
-          <h3 class="project-title">Event Recap</h3>
-          <p class="project-description">A polished recap that highlights energy, key moments, and strong emotional flow.</p>
-        </article>
-        <article class="project-card">
-          <small>Video edit sample</small>
-          <h3 class="project-title">Explainer Video</h3>
-          <p class="project-description">A clean explanatory edit that communicates a product message clearly and confidently.</p>
-        </article>
-        <article class="project-card">
-          <small>Monetized channel project</small>
-          <h3 class="project-title">YouTube monetization workflow</h3>
-          <p class="project-description">Content and channel strategy aligned to monetization requirements and audience growth on YouTube.</p>
-        </article>
-      </div>
-    </section>
-
+    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="section-title-row">
         <h2 class="section-title">Contact</h2>
       </div>
       <div class="section-split">
-        <div>
-          <div class="panel-card">
-            <h2>Ready to work together</h2>
-            <p>If you need a fast-turnaround video editor and funnel designer who can turn concepts into polished launch assets, let's connect and make your next campaign look premium.</p>
+        <div class="panel-card">
+          <h2>Available for Content Moderator roles</h2>
+          <p>I am actively seeking full-time remote Content Moderator and Trust & Safety positions. I am available immediately and equipped with certifications, a self-developed decision framework, and hands-on platform policy experience.</p>
+          <div class="badge-stack">
+            <span class="badgeline badgeline-accent">Full-time available</span>
+            <span class="badgeline badgeline-accent">Remote-ready</span>
+            <span class="badgeline badgeline-accent">Immediate start</span>
           </div>
         </div>
         <div class="contact-card">
           <div class="contact-item"><strong>Email</strong><span><a href="mailto:joshmuit81@gmail.com">joshmuit81@gmail.com</a></span></div>
           <div class="contact-item"><strong>Phone</strong><span><a href="tel:+639275910424">0927 591 0424</a></span></div>
           <div class="contact-item"><strong>Location</strong><span>Subic, Zambales, Philippines</span></div>
-          <div class="contact-item"><strong>Request resume</strong><span><a class="button button-secondary" href="mailto:joshmuit81@gmail.com?subject=Resume%20Request">Request Resume</a></span></div>
+          <div class="contact-item"><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/jush-agbalog-muit-3a6106377/" target="_blank">linkedin.com/in/jush-agbalog-muit</a></span></div>
+          <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Content%20Moderator%20Opportunity">Send message</a>
         </div>
       </div>
     </section>
 
     <footer>
-      Designed with a premium soft UI style for video editing and FBA automation.
+      Jush Agbalog Muit · Content Moderator · Trust & Safety · Subic, Zambales · 2026
     </footer>
   </div>
 </body>
