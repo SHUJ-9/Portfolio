@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jush Agbalog Muit | Content Moderator & Digital Creator</title>
+  <title>Jush Agbalog Muit | FBA & YTA Automation Editor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -73,13 +73,13 @@
         radial-gradient(1px 1px at 300px 300px, rgba(255,255,255,0.45), transparent);
       background-repeat: repeat;
       background-size: 320px 320px;
-      animation: twinkle 7s ease-in-out infinite alternate;
+      animation: twinkle 7s ease-in-out infinite alternate, drift1 140s linear infinite;
     }
 
     .starfield::after {
       content: '';
       position: absolute;
-      inset: 0;
+      inset: -220px;
       background-image:
         radial-gradient(1px 1px at 70px 30px, rgba(255,255,255,0.5), transparent),
         radial-gradient(1.2px 1.2px at 170px 110px, rgba(255,255,255,0.6), transparent),
@@ -88,11 +88,26 @@
         radial-gradient(1px 1px at 120px 260px, rgba(255,255,255,0.4), transparent);
       background-repeat: repeat;
       background-size: 220px 220px;
+      animation: drift2 200s linear infinite;
     }
 
     @keyframes twinkle {
       from { opacity: 0.6; }
       to { opacity: 0.95; }
+    }
+
+    @keyframes drift1 {
+      from { background-position: 0 0; }
+      to { background-position: 320px 640px; }
+    }
+
+    @keyframes drift2 {
+      from { background-position: 0 0; }
+      to { background-position: -220px 440px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .starfield, .starfield::after { animation: none; }
     }
 
     a { color: inherit; text-decoration: none; }
@@ -235,6 +250,13 @@
 
     .stat strong { font-size: 1.9rem; display: block; color: var(--accent); line-height: 1; }
     .stat span { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+    .result-card { display: grid; gap: 8px; }
+    .result-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
+    .result-value { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: var(--text); line-height: 1; }
+    .result-growth { display: inline-flex; align-items: center; gap: 4px; font-size: 0.8rem; font-weight: 700; color: #4ade80; }
+    .results-source { margin-top: 24px; font-size: 0.82rem; color: var(--muted); }
 
     .section { padding: 72px 0; }
 
@@ -451,33 +473,6 @@
     .cert-card .cert-valid { font-size: 0.82rem; color: var(--muted); }
     .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 8px; }
 
-    /* T&S Framework highlight */
-    .framework-card {
-      background: linear-gradient(135deg, #16385e 0%, #2d6da8 100%);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .framework-card h3 { color: #fff; font-size: 1.2rem; }
-    .framework-card p { color: rgba(255,255,255,0.82); }
-
-    .framework-tiers {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .tier {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .tier strong { display: block; font-size: 0.88rem; color: #fff; margin-bottom: 4px; }
-    .tier span { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
-
     footer {
       margin-top: 20px;
       text-align: center;
@@ -487,7 +482,6 @@
 
     @media (max-width: 1024px) {
       .hero, .section-split { grid-template-columns: 1fr; }
-      .framework-tiers { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -573,24 +567,24 @@
       <div class="topbar">
         <div class="brand">
           <strong>Jush Agbalog Muit</strong>
-          <span>Content Moderator · Trust & Safety · Digital Creator</span>
+          <span>Facebook & YouTube Automation · Video Editor</span>
         </div>
         <nav class="nav-links">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
+          <a href="#results">Results</a>
           <a href="#certifications">Certifications</a>
-          <a href="#framework">T&S Framework</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
 
       <section class="hero">
         <div class="hero-copy">
-          <span class="eyebrow">Content Moderation · Trust & Safety · Social Media</span>
-          <h1>Protecting online communities through structured, policy-first content moderation.</h1>
-          <p>BS Computer Science student with hands-on experience reviewing digital content for YouTube and Meta policy compliance, escalation handling, and community guidelines enforcement. HubSpot Social Media Certified. Available full-time for remote Content Moderator and Trust & Safety roles.</p>
+          <span class="eyebrow">Facebook Automation · YouTube Automation · Video Editing</span>
+          <h1>I edit and grow monetized pages that get millions of views.</h1>
+          <p>Video editor running 2 Facebook Automation pages (Page 1 monetized) and a monetized YouTube channel — CapCut editing, content strategy, and growth, all built to stay policy-compliant.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Content%20Moderator%20Opportunity">Let's connect</a>
+            <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Video%20Editing%20Opportunity">Let's connect</a>
             <a class="button button-secondary" href="#contact">View contact</a>
           </div>
         </div>
@@ -598,19 +592,19 @@
         <aside class="hero-panel panel-card glow-card">
           <div class="panel-title">Capability snapshot</div>
           <div class="panel-chips">
-            <span class="chip chip-accent">Content Moderation</span>
-            <span class="chip chip-accent">Policy Enforcement</span>
-            <span class="chip chip-accent">Escalation Handling</span>
-            <span class="chip chip-accent">Community Guidelines</span>
-            <span class="chip">Social Media Monitoring</span>
-            <span class="chip">Customer De-escalation</span>
-            <span class="chip">CapCut Video Editing</span>
+            <span class="chip chip-accent">Facebook Automation (FBA)</span>
+            <span class="chip chip-accent">YouTube Automation (YTA)</span>
+            <span class="chip chip-accent">CapCut Video Editing</span>
+            <span class="chip chip-accent">Monetized Pages</span>
+            <span class="chip">Content Strategy</span>
+            <span class="chip">Short-Form Storytelling</span>
+            <span class="chip">Thumbnail Design</span>
             <span class="chip">Full-time Remote Ready</span>
           </div>
           <div class="stats">
-            <div class="stat"><strong>3+</strong><span>Years content review experience</span></div>
-            <div class="stat"><strong>6+</strong><span>Delivered client projects</span></div>
-            <div class="stat"><strong>0</strong><span>Policy strikes on managed channels</span></div>
+            <div class="stat"><strong>4.6M+</strong><span>Views in last 28 days</span></div>
+            <div class="stat"><strong>2</strong><span>Monetized FBA & YTA pages</span></div>
+            <div class="stat"><strong>1.1M+</strong><span>Viewers reached</span></div>
           </div>
         </aside>
       </section>
@@ -628,20 +622,18 @@
           </div>
           <div style="text-align:center; margin-top: -8px;">
             <strong style="display:block; font-size:1rem; color:var(--text);">Jush A. Muit</strong>
-            <span style="font-size:0.82rem; color:var(--accent); font-weight:600; letter-spacing:0.08em;">Content Moderator</span>
+            <span style="font-size:0.82rem; color:var(--accent); font-weight:600; letter-spacing:0.08em;">FBA & YTA Editor</span>
           </div>
         </div>
         <div class="panel-card glow-card">
           <h2>Who I am</h2>
-          <p>I am a BS Computer Science student and freelance content reviewer based in Subic, Zambales. I have hands-on experience applying YouTube, Meta/Facebook, and Amazon content policies — reviewing content for violations, flagging issues before they go live, and maintaining zero policy strikes across managed channels.</p>
-          <p style="margin-top: 16px;">I have developed my own Trust & Safety Decision Framework covering violation classification (Tier 1–4), context evaluation, escalation protocols, and documentation standards. I am seeking a full-time Content Moderator or Trust & Safety role where I can protect users and uphold community standards at scale.</p>
+          <p>BS Computer Science student and video editor based in Subic, Zambales. I run and edit content for 2 monetized Facebook Automation pages and a monetized YouTube Automation channel — scripting, CapCut editing, thumbnails, and growth, kept fully policy-compliant.</p>
           <div class="badge-stack">
-            <span class="badgeline badgeline-accent">Content Moderation</span>
-            <span class="badgeline badgeline-accent">Trust & Safety</span>
-            <span class="badgeline badgeline-accent">Policy Enforcement</span>
-            <span class="badgeline">CapCut Editing</span>
-            <span class="badgeline">FBA Automation (2 Pages)</span>
-            <span class="badgeline">YTA — Monetized YouTube</span>
+            <span class="badgeline badgeline-accent">FBA Automation (2 Pages)</span>
+            <span class="badgeline badgeline-accent">YTA — Monetized YouTube</span>
+            <span class="badgeline badgeline-accent">CapCut Editing</span>
+            <span class="badgeline">Content Strategy</span>
+            <span class="badgeline">Monetization Compliance</span>
           </div>
         </div>
         <div class="panel-card glow-card">
@@ -675,31 +667,31 @@
       </div>
       <div class="section-grid">
         <div class="panel-card glow-card">
-          <h2>Trust & Safety — Core Skills</h2>
+          <h2>Automation & Growth Skills</h2>
           <ul class="skills-list">
-            <li class="skill-item"><div class="skill-label"><span>Content Moderation & Policy Review</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Escalation Handling & Documentation</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Community Guidelines Enforcement</span><span>87%</span></div><div class="progress"><span style="width: 87%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Social Media Monitoring</span><span>85%</span></div><div class="progress"><span style="width: 85%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Client Communication & De-escalation</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Monetization Policy Compliance</span><span>90%</span></div><div class="progress"><span style="width: 90%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Page Growth & Content Strategy</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Audience Retention Optimization</span><span>85%</span></div><div class="progress"><span style="width: 85%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Content Scheduling & Consistency</span><span>87%</span></div><div class="progress"><span style="width: 87%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Client Communication</span><span>88%</span></div><div class="progress"><span style="width: 88%"></span></div></li>
           </ul>
         </div>
         <div class="panel-card glow-card">
           <h2>Digital & Creative Skills</h2>
           <ul class="skills-list">
             <li class="skill-item"><div class="skill-label"><span>CapCut Video Editing</span><span>95%</span></div><div class="progress progress-gold"><span style="width: 95%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>Facebook Automation Pages (FBA) — 2 pages, Page 1 monetized</span><span>90%</span></div><div class="progress progress-gold"><span style="width: 90%"></span></div></li>
+            <li class="skill-item"><div class="skill-label"><span>YouTube Automation (YTA) — Monetized channel</span><span>88%</span></div><div class="progress progress-gold"><span style="width: 88%"></span></div></li>
             <li class="skill-item"><div class="skill-label"><span>Storytelling & Pacing</span><span>88%</span></div><div class="progress progress-gold"><span style="width: 88%"></span></div></li>
             <li class="skill-item"><div class="skill-label"><span>Visual Concept Development</span><span>84%</span></div><div class="progress progress-gold"><span style="width: 84%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>Facebook Automation Pages (FBA) — 2 pages, Page 1 monetized</span><span>80%</span></div><div class="progress progress-gold"><span style="width: 80%"></span></div></li>
-            <li class="skill-item"><div class="skill-label"><span>YouTube Automation (YTA) — Monetized channel</span><span>85%</span></div><div class="progress progress-gold"><span style="width: 85%"></span></div></li>
           </ul>
         </div>
         <div class="panel-card glow-card">
           <h2>Platform Knowledge</h2>
           <div class="badge-stack" style="margin-top: 0;">
-            <span class="badgeline badgeline-accent">YouTube Community Guidelines</span>
-            <span class="badgeline badgeline-accent">Meta/Facebook Standards</span>
-            <span class="badgeline badgeline-accent">Amazon Seller Policy</span>
+            <span class="badgeline badgeline-accent">YouTube Partner Program</span>
+            <span class="badgeline badgeline-accent">Meta/Facebook Page Policies</span>
+            <span class="badgeline badgeline-accent">CapCut</span>
             <span class="badgeline">Instagram</span>
             <span class="badgeline">TikTok</span>
             <span class="badgeline">Google Workspace</span>
@@ -715,7 +707,7 @@
       <div class="section-title-row">
         <h2 class="section-title">Certifications</h2>
       </div>
-      <p class="section-subtitle">Verified credentials demonstrating expertise in social media strategy, content policy, and digital marketing.</p>
+      <p class="section-subtitle">Verified credentials backing my social media strategy and platform policy knowledge — keeping every page I run monetized and compliant.</p>
       <div class="cert-grid">
         <div class="cert-card glow-card">
           <div class="cert-badge">✓ Verified</div>
@@ -766,58 +758,46 @@
           <h3>Meta Blueprint — Community Standards</h3>
           <p class="cert-issuer">Meta for Developers</p>
           <p class="cert-valid">Facebook & Instagram platform policies</p>
-          <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Hands-on knowledge of Meta Community Standards, content moderation workflows, and policy enforcement for Facebook and Instagram.</p>
+          <p style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">Hands-on knowledge of Meta Community Standards — what keeps Facebook Automation pages compliant and monetized.</p>
         </div>
       </div>
     </section>
 
-    <!-- T&S DECISION FRAMEWORK -->
-    <section id="framework" class="section">
+    <!-- RESULTS -->
+    <section id="results" class="section">
       <div class="section-title-row">
-        <h2 class="section-title">T&S Decision Framework</h2>
-        <a href="ts-framework.html" target="_blank" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:var(--accent); color:#fff; border-radius:999px; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 8px 24px rgba(76,141,255,0.3); transition:transform 0.2s, opacity 0.2s; white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">⬇ View & Download PDF</a>
+        <h2 class="section-title">Real Results</h2>
       </div>
-      <p class="section-subtitle">A self-developed, structured approach to content moderation — demonstrating real Trust & Safety methodology before being hired.</p>
-      <div class="section-grid">
-        <article class="feature-card framework-card">
-          <h3>5-Step Moderation Process</h3>
-          <p>A complete, repeatable framework for consistent content moderation decisions — from initial assessment through escalation and documentation.</p>
-          <div class="framework-tiers">
-            <div class="tier"><strong>Tier 1 — Critical</strong><span>CSAM, terrorism, doxxing, direct threats → immediate removal + escalation</span></div>
-            <div class="tier"><strong>Tier 2 — High Severity</strong><span>Hate speech, graphic violence, harassment → remove + account action</span></div>
-            <div class="tier"><strong>Tier 3 — Moderate</strong><span>Misinformation, spam, copyright → restrict + notify user</span></div>
-            <div class="tier"><strong>Tier 4 — Monitor</strong><span>Borderline content, first-time minor breach → label + observe</span></div>
+      <p class="section-subtitle">Facebook Page Insights from one of the FBA pages I edit and manage — last 28 days.</p>
+      <div class="panel-card glow-card">
+        <div class="results-grid">
+          <div class="result-card">
+            <span class="result-label">Views</span>
+            <strong class="result-value">4.6M</strong>
+            <span class="result-growth">↑ 548.4%</span>
           </div>
-        </article>
-        <article class="feature-card glow-card">
-          <h3>Context Evaluation Matrix</h3>
-          <p>Before finalizing any decision, content is evaluated across five dimensions: newsworthiness, educational value, satire, cultural context, and targeting of private individuals.</p>
-          <div class="badge-stack">
-            <span class="badgeline badgeline-accent">Newsworthy?</span>
-            <span class="badgeline badgeline-accent">Educational?</span>
-            <span class="badgeline badgeline-accent">Satirical?</span>
-            <span class="badgeline badgeline-accent">Cultural context?</span>
-            <span class="badgeline badgeline-accent">Targeted individual?</span>
+          <div class="result-card">
+            <span class="result-label">3-Second Views</span>
+            <strong class="result-value">181.3K</strong>
+            <span class="result-growth">↑ 17.1%</span>
           </div>
-        </article>
-        <article class="feature-card glow-card">
-          <h3>Escalation Protocol</h3>
-          <p>Clear 3-level escalation path with defined triggers — from independent moderator decisions to senior team and legal review — ensuring no harmful content is ever approved unilaterally.</p>
-          <div class="badge-stack">
-            <span class="badgeline">Level 1: Moderator</span>
-            <span class="badgeline">Level 2: Team Lead</span>
-            <span class="badgeline">Level 3: Legal/Policy</span>
+          <div class="result-card">
+            <span class="result-label">Interactions</span>
+            <strong class="result-value">51.2K</strong>
+            <span class="result-growth">↑ 366%</span>
           </div>
-        </article>
-        <article class="feature-card glow-card">
-          <h3>Documentation Standard</h3>
-          <p>Every moderation action is logged with content ID, timestamp, violation tier, policy reference, action taken, and escalation status — building a defensible, auditable record.</p>
-          <div class="badge-stack">
-            <span class="badgeline badgeline-accent">Consistent</span>
-            <span class="badgeline badgeline-accent">Defensible</span>
-            <span class="badgeline badgeline-accent">Auditable</span>
+          <div class="result-card">
+            <span class="result-label">Watch Time</span>
+            <strong class="result-value">109d 13h</strong>
+            <span class="result-growth">↑ 14.8%</span>
           </div>
-        </article>
+          <div class="result-card">
+            <span class="result-label">Viewers</span>
+            <strong class="result-value">1.1M</strong>
+            <span class="result-growth">↑ 274.3%</span>
+          </div>
+        </div>
+        <p class="results-source">Source: Facebook Page Insights · 4,574,662 of 4,574,669 views were organic (0 from ads).</p>
       </div>
     </section>
 
@@ -831,14 +811,9 @@
           <h2>Work History</h2>
           <ul class="timeline">
             <li class="timeline-item">
-              <h3>Content Reviewer & Video Editor</h3>
-              <small>Self-Employed (Freelance) · 2023–Present</small>
-              <p>Reviewed 100+ pieces of digital content monthly for YouTube and Meta policy compliance. Achieved zero policy strikes across all managed channels. Guided one YouTube channel to full monetization approval through strict content standards enforcement.</p>
-            </li>
-            <li class="timeline-item">
               <h3>Video Editor — Facebook & YouTube Automation Pages</h3>
               <small>Self-Employed (Freelance) · 2023–Present</small>
-              <p>Edit and produce short-form video content for 2 Facebook Automation (FBA) pages — Page 1 fully monetized — plus a monetized YouTube Automation (YTA) channel. Handle scripting, CapCut editing, thumbnails, and upload while keeping every page compliant with platform monetization policies.</p>
+              <p>Edit and grow content for 2 Facebook Automation (FBA) pages — Page 1 fully monetized — plus a monetized YouTube Automation (YTA) channel. Scripting, CapCut editing, thumbnails, and upload, kept fully compliant with platform monetization policies.</p>
             </li>
             <li class="timeline-item">
               <h3>Customer Service Representative</h3>
@@ -865,8 +840,8 @@
       </div>
       <div class="section-split">
         <div class="panel-card glow-card">
-          <h2>Available for Content Moderator roles</h2>
-          <p>I am actively seeking full-time remote Content Moderator and Trust & Safety positions. I am available immediately and equipped with certifications, a self-developed decision framework, and hands-on platform policy experience.</p>
+          <h2>Available for video editing work</h2>
+          <p>Actively looking for full-time remote video editing and FBA/YTA page management work. Available immediately, with real monetized pages and results to show for it.</p>
           <div class="badge-stack">
             <span class="badgeline badgeline-accent">Full-time available</span>
             <span class="badgeline badgeline-accent">Remote-ready</span>
@@ -878,13 +853,13 @@
           <div class="contact-item"><strong>Phone</strong><span><a href="tel:+639275910424">0927 591 0424</a></span></div>
           <div class="contact-item"><strong>Location</strong><span>Subic, Zambales, Philippines</span></div>
           <div class="contact-item"><strong>LinkedIn</strong><span><a href="https://www.linkedin.com/in/jush-agbalog-muit-3a6106377/" target="_blank">linkedin.com/in/jush-agbalog-muit</a></span></div>
-          <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Content%20Moderator%20Opportunity">Send message</a>
+          <a class="button button-primary" href="mailto:joshmuit81@gmail.com?subject=Video%20Editing%20Opportunity">Send message</a>
         </div>
       </div>
     </section>
 
     <footer>
-      Jush Agbalog Muit · Content Moderator · Trust & Safety · Subic, Zambales · 2026
+      Jush Agbalog Muit · Video Editor · FBA & YTA Automation · Subic, Zambales · 2026
     </footer>
   </div>
 
