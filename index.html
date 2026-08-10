@@ -756,6 +756,27 @@
       transform: translateY(-2px);
     }
 
+    /* VIDEO SHOWCASE */
+    .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* PROOF LIGHTBOX */
     .proof-link {
       display: inline-flex;
@@ -885,8 +906,9 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#results">Results</a>
+        <a href="#work">Work</a>
         <a href="#certifications">Certifications</a>
+        <a href="#results">Results</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a class="button button-primary nav-cta" href="#contact">Let's Connect</a>
@@ -1036,6 +1058,37 @@
             <span class="badgeline">Google Flow</span>
             <span class="badgeline">Seedance</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK SAMPLES -->
+    <section id="work" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">Video Editing Samples</h2>
+      </div>
+      <p class="section-subtitle">A quick look at the range of niches I edit for — anime edits, US cooking content, and Tagalog drama.</p>
+      <div class="work-grid">
+        <div class="feature-card glow-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/YDx_lLFcUZI" title="Anime Style Edit" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <h3 style="margin-top: 16px;">Anime Style</h3>
+          <p>Fast-paced anime-style edit with dynamic transitions and sound-synced cuts.</p>
+        </div>
+        <div class="feature-card glow-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/tessNtPiyzc" title="Cooking Niche — US Audience" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <h3 style="margin-top: 16px;">Cooking — US Audience</h3>
+          <p>Clean, appetite-driven cooking edit paced for a US short-form audience.</p>
+        </div>
+        <div class="feature-card glow-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/ly2N0753rO0" title="Drama Tagalog Niche" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <h3 style="margin-top: 16px;">Drama — Tagalog Niche</h3>
+          <p>Emotional Tagalog drama edit with lip-sync pacing and narrative-driven cuts.</p>
         </div>
       </div>
     </section>
