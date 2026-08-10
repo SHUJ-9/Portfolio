@@ -756,6 +756,76 @@
       transform: translateY(-2px);
     }
 
+    /* PROOF LIGHTBOX */
+    .proof-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .proof-link:hover {
+      border-color: rgba(76, 141, 255, 0.35);
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .lightbox-overlay img {
+      max-width: min(900px, 100%);
+      max-height: 82vh;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+      display: block;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.16); }
+
     /* BACK TO TOP */
     #back-to-top {
       position: fixed;
@@ -1041,6 +1111,7 @@
               <span class="result-growth">↑ 274.3%</span>
             </div>
           </div>
+          <button class="proof-link" data-lightbox="images/proof/fba-page1.png">🔍 View Screenshot</button>
         </div>
         <div class="feature-card glow-card">
           <div class="cert-badge">✓ Monetized</div>
@@ -1058,6 +1129,7 @@
               <span class="result-growth">↑ 37.8%</span>
             </div>
           </div>
+          <button class="proof-link" data-lightbox="images/proof/fba-page2.png">🔍 View Screenshot</button>
         </div>
         <div class="feature-card glow-card">
           <div class="cert-badge">✓ Monetized</div>
@@ -1073,6 +1145,7 @@
               <strong class="result-value">$111.14</strong>
             </div>
           </div>
+          <button class="proof-link" data-lightbox="images/proof/yta-partner-program.png">🔍 View Partner Program Proof</button>
         </div>
       </div>
     </section>
@@ -1191,6 +1264,11 @@
 
   <button id="back-to-top" aria-label="Back to top">↑</button>
 
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <img id="lightbox-img" src="" alt="Proof screenshot" />
+  </div>
+
   <script>
     // Cursor glow follower
     const cursorGlow = document.getElementById('cursor-glow');
@@ -1244,6 +1322,23 @@
       backToTop.classList.toggle('visible', window.scrollY > 500);
     }, { passive: true });
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Proof lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+    }
+    document.querySelectorAll('[data-lightbox]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lightboxImg.src = btn.getAttribute('data-lightbox');
+        lightbox.classList.add('open');
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>
