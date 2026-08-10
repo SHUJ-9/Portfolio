@@ -32,6 +32,8 @@
       background: linear-gradient(180deg, #050507 0%, #0a0a12 55%, #050507 100%);
       overflow-x: hidden;
       position: relative;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     body::before, body::after {
@@ -147,11 +149,11 @@
       gap: 18px;
     }
 
-    .brand { display: grid; gap: 4px; }
+    .brand { display: grid; gap: 4px; min-width: 0; }
     .brand strong { font-size: 1.1rem; letter-spacing: -0.02em; }
     .brand span { font-size: 0.92rem; color: var(--muted); }
 
-    .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; min-width: 0; }
     .nav-links a:not(.nav-cta) { font-size: 0.95rem; color: var(--muted); transition: color 0.2s ease; }
     .nav-links a:not(.nav-cta):hover { color: var(--text); }
 
@@ -163,9 +165,10 @@
       gap: 32px;
       grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
       align-items: flex-start;
+      min-width: 0;
     }
 
-    .hero-copy, .hero-panel { position: relative; z-index: 1; }
+    .hero-copy, .hero-panel { position: relative; z-index: 1; min-width: 0; }
 
     /* FLOATING TAG CONSTELLATION */
     .hero-float-layer {
@@ -566,7 +569,7 @@
     .cert-card h3 { color: var(--accent); font-size: 1.05rem; margin: 0 0 8px; }
     .cert-card .cert-issuer { font-size: 0.88rem; color: var(--muted); margin: 0 0 6px; }
     .cert-card .cert-valid { font-size: 0.82rem; color: var(--muted); }
-    .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 8px; }
+    .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 8px; word-break: break-all; }
 
     footer {
       margin-top: 20px;
@@ -580,9 +583,20 @@
     }
 
     @media (max-width: 720px) {
-      .container { padding: 100px 20px 64px; }
-      .nav-inner { justify-content: center; }
-      .nav-links { justify-content: center; }
+      .container { padding: 190px 20px 64px; }
+      .nav-inner { flex-direction: column; justify-content: center; padding: 14px 16px; gap: 12px; }
+      .brand { text-align: center; }
+      .brand span { display: none; }
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        justify-content: center;
+        width: 100%;
+        gap: 12px 16px;
+        font-size: 0.85rem;
+      }
+      .nav-links a:not(.nav-cta) { font-size: 0.85rem; text-align: center; }
+      .nav-cta { grid-column: 1 / -1; width: 100%; margin-top: 4px; }
       .hero-copy h1 { font-size: clamp(2.4rem, 6vw, 3.2rem); }
       .button { width: 100%; }
       .cert-grid { grid-template-columns: 1fr; }
@@ -999,11 +1013,11 @@
       </div>
       <style>
         @media (max-width: 1024px) {
-          #about .section > div[style] { grid-template-columns: 1fr 1fr !important; }
-          #about .section > div[style] > div:first-child { grid-column: 1 / -1; max-width: 240px; margin: 0 auto; }
+          #about > div[style] { grid-template-columns: 1fr 1fr !important; }
+          #about > div[style] > div:first-child { grid-column: 1 / -1; max-width: 240px; margin: 0 auto; }
         }
         @media (max-width: 720px) {
-          #about .section > div[style] { grid-template-columns: 1fr !important; }
+          #about > div[style] { grid-template-columns: 1fr !important; }
         }
       </style>
     </section>
