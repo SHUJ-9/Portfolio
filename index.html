@@ -117,17 +117,29 @@
       z-index: 1;
       max-width: 1160px;
       margin: 0 auto;
-      padding: 48px 28px 88px;
+      padding: 116px 28px 88px;
     }
 
     header {
-      display: grid;
-      gap: 32px;
       padding-bottom: 36px;
       border-bottom: 1px solid var(--border);
     }
 
-    .topbar {
+    /* STICKY GLASS NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(5, 5, 7, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -139,15 +151,61 @@
     .brand strong { font-size: 1.1rem; letter-spacing: -0.02em; }
     .brand span { font-size: 0.92rem; color: var(--muted); }
 
-    .nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
-    .nav-links a { font-size: 0.95rem; color: var(--muted); transition: color 0.2s ease; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .nav-links a:not(.nav-cta) { font-size: 0.95rem; color: var(--muted); transition: color 0.2s ease; }
+    .nav-links a:not(.nav-cta):hover { color: var(--text); }
+
+    .nav-cta { padding: 10px 20px; font-size: 0.84rem; }
 
     .hero {
+      position: relative;
       display: grid;
       gap: 32px;
       grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
       align-items: flex-start;
+    }
+
+    .hero-copy, .hero-panel { position: relative; z-index: 1; }
+
+    /* FLOATING TAG CONSTELLATION */
+    .hero-float-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .float-tag {
+      position: absolute;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+      animation: floaty 7s ease-in-out infinite alternate;
+    }
+
+    .float-tag.accent {
+      color: var(--accent);
+      background: var(--accent-light);
+      border-color: rgba(76, 141, 255, 0.3);
+    }
+
+    @keyframes floaty {
+      from { transform: translate(0, 0); }
+      to { transform: translate(var(--fx, 12px), var(--fy, -16px)); }
+    }
+
+    @media (max-width: 980px) {
+      .hero-float-layer { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .float-tag { animation: none; }
     }
 
     .hero-copy { display: grid; gap: 28px; }
@@ -200,7 +258,7 @@
       border-color: var(--border);
     }
 
-    .button:hover { transform: translateY(-2px); }
+    .button:hover { transform: translateY(-2px) scale(1.03); }
 
     .hero-panel {
       padding: 32px;
@@ -522,8 +580,8 @@
     }
 
     @media (max-width: 720px) {
-      .container { padding: 32px 20px 64px; }
-      .topbar { justify-content: center; }
+      .container { padding: 100px 20px 64px; }
+      .nav-inner { justify-content: center; }
       .nav-links { justify-content: center; }
       .hero-copy h1 { font-size: clamp(2.4rem, 6vw, 3.2rem); }
       .button { width: 100%; }
@@ -581,6 +639,154 @@
       z-index: 1;
     }
 
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.25s ease;
+    }
+
+    .reveal.reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* FAQ ACCORDION */
+    .faq-list { display: grid; gap: 14px; }
+
+    .faq-item {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item.open { border-color: rgba(76, 141, 255, 0.3); }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: rgba(76, 141, 255, 0.3);
+    }
+
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+
+    .faq-answer-inner {
+      overflow: hidden;
+      color: var(--muted);
+      line-height: 1.75;
+      padding: 0 24px;
+      transition: padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer-inner { padding: 0 24px 20px; }
+
+    /* FOOTER */
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links { display: flex; gap: 10px; }
+
+    .footer-links a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      background: var(--accent-light);
+      border-color: rgba(76, 141, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* BACK TO TOP */
+    #back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 90;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    }
+
+    #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    #back-to-top:hover { background: var(--accent-light); transform: translateY(-3px); }
+
+    @media (max-width: 720px) {
+      #back-to-top { right: 16px; bottom: 16px; }
+    }
+
     /* Custom cursor glow dot */
     #cursor-glow {
       pointer-events: none;
@@ -599,23 +805,34 @@
 <body>
   <div id="cursor-glow"></div>
   <div class="starfield"></div>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>Jush Agbalog Muit</strong>
+        <span>Facebook & YouTube Automation · Video Editor</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#results">Results</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="button button-primary nav-cta" href="#contact">Let's Connect</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
     <header>
-      <div class="topbar">
-        <div class="brand">
-          <strong>Jush Agbalog Muit</strong>
-          <span>Facebook & YouTube Automation · Video Editor</span>
-        </div>
-        <nav class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#results">Results</a>
-          <a href="#certifications">Certifications</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-
       <section class="hero">
+        <div class="hero-float-layer">
+          <span class="float-tag accent" style="top: 71%; left: 4%; animation-duration: 8s; --fx: 12px; --fy: -14px;">FBA</span>
+          <span class="float-tag" style="top: 79%; left: 30%; animation-duration: 9s; animation-delay: -2s; --fx: -12px; --fy: 12px;">CapCut</span>
+          <span class="float-tag accent" style="top: 88%; left: 10%; animation-duration: 7.5s; animation-delay: -4s; --fx: 10px; --fy: -10px;">YTA</span>
+          <span class="float-tag" style="top: 71%; left: 46%; animation-duration: 10s; animation-delay: -1s; --fx: -10px; --fy: 14px;">Monetized</span>
+        </div>
         <div class="hero-copy">
           <span class="eyebrow">Facebook Automation · YouTube Automation · Video Editing</span>
           <h1>I edit and grow monetized pages that get millions of views.</h1>
@@ -892,6 +1109,50 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="section-title-row">
+        <h2 class="section-title">FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Are you available for full-time or freelance work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Both — I'm open to full-time remote roles and freelance/project-based work editing or managing Facebook and YouTube automation pages.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What's your typical turnaround time?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Depends on scope, but most short-form edits are delivered within 24–48 hours.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you only edit in CapCut?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">CapCut is my primary tool for short-form editing, but I'm comfortable adapting to a team's existing workflow and tools.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Will the pages you manage stay monetized?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes — I follow strict content and monetization policy compliance so pages stay in good standing while growing, the same way I run my own FBA and YTA pages.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How can I reach you?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Email or the contact section below — I usually reply within 24 hours.</div></div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="section-title-row">
@@ -918,9 +1179,17 @@
     </section>
 
     <footer>
-      Jush Agbalog Muit · Video Editor · FBA & YTA Automation · Subic, Zambales · 2026
+      <div class="footer-inner">
+        <span>© 2026 Jush Agbalog Muit · Video Editor · FBA & YTA Automation · Subic, Zambales</span>
+        <div class="footer-links">
+          <a href="mailto:joshmuit81@gmail.com" aria-label="Email">✉</a>
+          <a href="https://www.linkedin.com/in/jush-agbalog-muit-3a6106377/" target="_blank" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
     </footer>
   </div>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
 
   <script>
     // Cursor glow follower
@@ -940,6 +1209,41 @@
         card.style.setProperty('--mouse-y', y + '%');
       });
     });
+
+    // Scroll reveal
+    document.querySelectorAll('.section-title-row, .results-intro, .panel-card, .feature-card, .cert-card, .contact-card, .faq-item').forEach(el => el.classList.add('reveal'));
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('open');
+            other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+        });
+        item.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // Back to top
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
