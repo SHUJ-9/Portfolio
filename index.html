@@ -9,16 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #fff8f6;
-      --surface: rgba(255, 255, 255, 0.88);
-      --text: #2d3436;
-      --muted: #5f6a7a;
-      --border: rgba(45, 52, 54, 0.12);
-      --accent: #1F4D78;
-      --accent-light: rgba(31, 77, 120, 0.08);
+      color-scheme: dark;
+      --bg: #050507;
+      --surface: rgba(255, 255, 255, 0.045);
+      --text: #f5f6f8;
+      --muted: #9aa4b2;
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #4C8DFF;
+      --accent-light: rgba(76, 141, 255, 0.14);
       --gold: #d4af37;
-      --shadow: 0 28px 80px rgba(45, 52, 54, 0.08);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
       font-family: 'Montserrat', system-ui, sans-serif;
     }
 
@@ -29,30 +29,70 @@
       margin: 0;
       min-height: 100vh;
       color: var(--text);
-      background: linear-gradient(180deg, #fff7f3 0%, #f9efea 52%, #fffaf7 100%);
+      background: linear-gradient(180deg, #050507 0%, #0a0a12 55%, #050507 100%);
       overflow-x: hidden;
       position: relative;
     }
 
     body::before, body::after {
       content: '';
-      position: absolute;
+      position: fixed;
       z-index: 0;
       pointer-events: none;
       border-radius: 50%;
-      filter: blur(90px);
+      filter: blur(110px);
     }
 
     body::before {
       top: -120px; left: -90px;
-      width: 380px; height: 380px;
-      background: rgba(31, 77, 120, 0.10);
+      width: 420px; height: 420px;
+      background: rgba(76, 141, 255, 0.14);
     }
 
     body::after {
       bottom: -100px; right: -90px;
-      width: 320px; height: 320px;
-      background: rgba(212, 175, 55, 0.14);
+      width: 360px; height: 360px;
+      background: rgba(212, 175, 55, 0.10);
+    }
+
+    /* STARFIELD */
+    .starfield {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.85;
+      background-image:
+        radial-gradient(1.6px 1.6px at 40px 60px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.2px 1.2px at 140px 140px, rgba(255,255,255,0.65), transparent),
+        radial-gradient(1.8px 1.8px at 90px 220px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 220px 40px, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1.4px 1.4px at 190px 260px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 260px 150px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.3px 1.3px at 10px 280px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 300px 300px, rgba(255,255,255,0.45), transparent);
+      background-repeat: repeat;
+      background-size: 320px 320px;
+      animation: twinkle 7s ease-in-out infinite alternate;
+    }
+
+    .starfield::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 70px 30px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.2px 1.2px at 170px 110px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 250px 190px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1.4px 1.4px at 30px 200px, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 120px 260px, rgba(255,255,255,0.4), transparent);
+      background-repeat: repeat;
+      background-size: 220px 220px;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.6; }
+      to { opacity: 0.95; }
     }
 
     a { color: inherit; text-decoration: none; }
@@ -136,11 +176,11 @@
     .button-primary {
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 18px 50px rgba(31, 77, 120, 0.22);
+      box-shadow: 0 18px 50px rgba(76, 141, 255, 0.3);
     }
 
     .button-secondary {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text);
       border-color: var(--border);
     }
@@ -169,16 +209,16 @@
     .chip {
       padding: 10px 16px;
       border-radius: 999px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
       font-size: 0.88rem;
-      border: 1px solid rgba(45, 52, 54, 0.08);
+      border: 1px solid var(--border);
     }
 
     .chip-accent {
       background: var(--accent-light);
       color: var(--accent);
-      border-color: rgba(31, 77, 120, 0.18);
+      border-color: rgba(76, 141, 255, 0.3);
       font-weight: 600;
     }
 
@@ -189,8 +229,8 @@
       gap: 6px;
       padding: 20px 22px;
       border-radius: 24px;
-      background: linear-gradient(180deg, #f0f6ff 0%, #dceaf7 100%);
-      border: 1px solid rgba(31, 77, 120, 0.12);
+      background: linear-gradient(180deg, rgba(76,141,255,0.14) 0%, rgba(76,141,255,0.03) 100%);
+      border: 1px solid rgba(76, 141, 255, 0.22);
     }
 
     .stat strong { font-size: 1.9rem; display: block; color: var(--accent); line-height: 1; }
@@ -227,7 +267,8 @@
       border-radius: 26px;
       border: 1px solid var(--border);
       background: var(--surface);
-      box-shadow: 0 28px 70px rgba(45, 52, 54, 0.07);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
       padding: 30px;
     }
 
@@ -237,7 +278,7 @@
 
     .feature-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 32px 90px rgba(45, 52, 54, 0.1);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.6);
     }
 
     .feature-card h3, .project-card h3, .panel-card h2, .cert-card h3 {
@@ -255,11 +296,11 @@
     .badge-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 
     .badgeline {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
       padding: 10px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(45, 52, 54, 0.08);
+      border: 1px solid var(--border);
       font-size: 0.88rem;
       display: inline-flex;
     }
@@ -267,7 +308,7 @@
     .badgeline-accent {
       background: var(--accent-light);
       color: var(--accent);
-      border-color: rgba(31, 77, 120, 0.18);
+      border-color: rgba(76, 141, 255, 0.3);
       font-weight: 600;
     }
 
@@ -283,9 +324,9 @@
       display: grid;
       gap: 10px;
       padding: 18px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.035);
       border-radius: 22px;
-      border: 1px solid rgba(45, 52, 54, 0.08);
+      border: 1px solid var(--border);
     }
 
     .skill-label, .contact-item strong {
@@ -299,7 +340,7 @@
 
     .progress {
       width: 100%; height: 12px;
-      background: #ece7dd;
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 999px;
       overflow: hidden;
     }
@@ -308,7 +349,7 @@
       height: 100%;
       border-radius: inherit;
       display: block;
-      background: linear-gradient(90deg, #1F4D78 0%, #3a7abf 100%);
+      background: linear-gradient(90deg, #4C8DFF 0%, #8ab6ff 100%);
     }
 
     .progress-gold span {
@@ -346,8 +387,8 @@
       height: 280px;
       border-radius: 20px;
       overflow: hidden;
-      border: 2px solid rgba(31,77,120,0.18);
-      box-shadow: 0 12px 48px rgba(31,77,120,0.16);
+      border: 2px solid rgba(76,141,255,0.28);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5), 0 0 40px rgba(76,141,255,0.12);
       margin-bottom: 22px;
       position: relative;
     }
@@ -356,7 +397,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(31,77,120,0.28) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
       border-radius: inherit;
       pointer-events: none;
     }
@@ -381,7 +422,7 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 32px rgba(31,77,120,0.10);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     .cert-image-wrap img {
@@ -408,13 +449,13 @@
     .cert-card h3 { color: var(--accent); font-size: 1.05rem; margin: 0 0 8px; }
     .cert-card .cert-issuer { font-size: 0.88rem; color: var(--muted); margin: 0 0 6px; }
     .cert-card .cert-valid { font-size: 0.82rem; color: var(--muted); }
-    .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 8px; }
+    .cert-card .cert-code { font-size: 0.78rem; color: var(--muted); margin-top: 12px; font-family: monospace; background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 8px; }
 
     /* T&S Framework highlight */
     .framework-card {
-      background: linear-gradient(135deg, #1F4D78 0%, #2d6da8 100%);
+      background: linear-gradient(135deg, #16385e 0%, #2d6da8 100%);
       color: #fff;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .framework-card h3 { color: #fff; font-size: 1.2rem; }
@@ -474,8 +515,8 @@
       border-radius: inherit;
       pointer-events: none;
       background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(31, 77, 120, 0.13) 0%,
-        rgba(31, 77, 120, 0.05) 40%,
+        rgba(76, 141, 255, 0.16) 0%,
+        rgba(76, 141, 255, 0.06) 40%,
         transparent 70%);
       z-index: 0;
     }
@@ -489,7 +530,7 @@
       border-radius: inherit;
       pointer-events: none;
       background: radial-gradient(200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(31, 77, 120, 0.18) 0%,
+        rgba(76, 141, 255, 0.22) 0%,
         transparent 70%);
       z-index: 0;
     }
@@ -501,7 +542,7 @@
 
     .glow-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 32px 80px rgba(31, 77, 120, 0.14), 0 0 0 1px rgba(31, 77, 120, 0.12);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(76, 141, 255, 0.2);
     }
 
     .glow-card > * {
@@ -516,7 +557,7 @@
       width: 340px;
       height: 340px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(31,77,120,0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(76,141,255,0.12) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       transition: left 0.06s linear, top 0.06s linear;
       z-index: 9999;
@@ -526,6 +567,7 @@
 </head>
 <body>
   <div id="cursor-glow"></div>
+  <div class="starfield"></div>
   <div class="container">
     <header>
       <div class="topbar">
@@ -687,40 +729,40 @@
           </div>
         </div>
         <div class="cert-card glow-card" style="border-left-color: #2ecc71;">
-          <div class="cert-badge" style="background: rgba(46,204,113,0.1); color: #1a9950;">✓ Completed</div>
+          <div class="cert-badge" style="background: rgba(46,204,113,0.14); color: #4ade80;">✓ Completed</div>
           <h3>Diploma in Social Media Marketing and Strategy</h3>
           <p class="cert-issuer">Alison · Advanced Level</p>
           <p class="cert-valid">Completed: 2 June 2026</p>
 
           <!-- Alison proof card -->
-          <div style="margin-top: 16px; background: linear-gradient(135deg, #f0faf4, #e6f7ed); border: 1px solid rgba(46,204,113,0.25); border-radius: 14px; padding: 16px 18px; display: grid; gap: 10px;">
+          <div style="margin-top: 16px; background: linear-gradient(135deg, rgba(46,204,113,0.10), rgba(46,204,113,0.03)); border: 1px solid rgba(46,204,113,0.25); border-radius: 14px; padding: 16px 18px; display: grid; gap: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <span style="font-weight: 700; font-size: 0.95rem; color: #1a9950;">Alison Dashboard Verification</span>
-              <span style="font-size: 0.78rem; color: #5f6a7a; background: #fff; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.08);">ALISON ID: 58818585</span>
+              <span style="font-weight: 700; font-size: 0.95rem; color: #4ade80;">Alison Dashboard Verification</span>
+              <span style="font-size: 0.78rem; color: var(--muted); background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1);">ALISON ID: 58818585</span>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-              <div style="background: #fff; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(0,0,0,0.06);">
-                <strong style="display: block; font-size: 1.4rem; color: #1a9950;">1/1</strong>
-                <span style="font-size: 0.75rem; color: #5f6a7a; text-transform: uppercase; letter-spacing: 0.1em;">Courses Completed</span>
+              <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08);">
+                <strong style="display: block; font-size: 1.4rem; color: #4ade80;">1/1</strong>
+                <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Courses Completed</span>
               </div>
-              <div style="background: #fff; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(0,0,0,0.06);">
-                <strong style="display: block; font-size: 1.4rem; color: #1a9950;">88%</strong>
-                <span style="font-size: 0.75rem; color: #5f6a7a; text-transform: uppercase; letter-spacing: 0.1em;">Average Score</span>
+              <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08);">
+                <strong style="display: block; font-size: 1.4rem; color: #4ade80;">88%</strong>
+                <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Average Score</span>
               </div>
-              <div style="background: #fff; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(0,0,0,0.06);">
-                <strong style="display: block; font-size: 1.4rem; color: #1a9950;">100%</strong>
-                <span style="font-size: 0.75rem; color: #5f6a7a; text-transform: uppercase; letter-spacing: 0.1em;">Completion Rate</span>
+              <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08);">
+                <strong style="display: block; font-size: 1.4rem; color: #4ade80;">100%</strong>
+                <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Completion Rate</span>
               </div>
-              <div style="background: #fff; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(0,0,0,0.06);">
-                <strong style="display: block; font-size: 1rem; color: #1a9950;">Jun 2</strong>
-                <span style="font-size: 0.75rem; color: #5f6a7a; text-transform: uppercase; letter-spacing: 0.1em;">Date · 2026</span>
+              <div style="background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.08);">
+                <strong style="display: block; font-size: 1rem; color: #4ade80;">Jun 2</strong>
+                <span style="font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em;">Date · 2026</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="cert-card glow-card" style="border-left-color: var(--gold);">
-          <div class="cert-badge" style="background: rgba(212,175,55,0.1); color: #8c6b2e;">Knowledge</div>
+          <div class="cert-badge" style="background: rgba(212,175,55,0.14); color: #e6c358;">Knowledge</div>
           <h3>Meta Blueprint — Community Standards</h3>
           <p class="cert-issuer">Meta for Developers</p>
           <p class="cert-valid">Facebook & Instagram platform policies</p>
@@ -733,7 +775,7 @@
     <section id="framework" class="section">
       <div class="section-title-row">
         <h2 class="section-title">T&S Decision Framework</h2>
-        <a href="ts-framework.html" target="_blank" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:var(--accent); color:#fff; border-radius:999px; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 8px 24px rgba(31,77,120,0.22); transition:transform 0.2s, opacity 0.2s; white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">⬇ View & Download PDF</a>
+        <a href="ts-framework.html" target="_blank" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; background:var(--accent); color:#fff; border-radius:999px; font-size:0.85rem; font-weight:700; text-decoration:none; box-shadow:0 8px 24px rgba(76,141,255,0.3); transition:transform 0.2s, opacity 0.2s; white-space:nowrap;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">⬇ View & Download PDF</a>
       </div>
       <p class="section-subtitle">A self-developed, structured approach to content moderation — demonstrating real Trust & Safety methodology before being hired.</p>
       <div class="section-grid">
